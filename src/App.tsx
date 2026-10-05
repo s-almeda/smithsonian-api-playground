@@ -1,19 +1,30 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { callApi, SIGNUP_URL, useApiKey, type ApiRequest, type Lang } from './api'
 import { DEFAULT_SEARCH, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery } from './tabs'
 
 type Tab = 'search' | 'item' | 'terms'
 
+// shareable links: ?id=edanmdm:... opens that record in the content tab
+const linkedId = new URLSearchParams(location.search).get('id')
+
 export default function App() {
   const { key, stored, fromEnv, save } = useApiKey()
-  const [tab, setTab] = useState<Tab>('search')
+  const [tab, setTab] = useState<Tab>(linkedId ? 'item' : 'search')
   const lang = useState<Lang>('curl')
   const run = useCallback((req: ApiRequest) => callApi(req, key), [key])
 
   const [searchForm, setSearchForm] = useState<SearchForm>(DEFAULT_SEARCH)
   const [searchQuery, setSearchQuery] = useState<SearchQuery | null>(null)
-  const [itemInput, setItemInput] = useState('')
-  const [itemQuery, setItemQuery] = useState<ItemQuery | null>(null)
+  const [itemInput, setItemInput] = useState(linkedId ?? '')
+  const [itemQuery, setItemQuery] = useState<ItemQuery | null>(linkedId ? { id: linkedId, n: 0 } : null)
+
+  // keep ?id= in the address bar in sync with the record being viewed
+  useEffect(() => {
+    const url = new URL(location.href)
+    if (tab === 'item' && itemQuery) url.searchParams.set('id', itemQuery.id)
+    else url.searchParams.delete('id')
+    history.replaceState(null, '', url)
+  }, [tab, itemQuery])
 
   const openItem = (id: string) => {
     setItemInput(id)

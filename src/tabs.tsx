@@ -1,4 +1,4 @@
-import { createContext, Fragment, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, Fragment, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Clipboard, PanelRightClose, PanelRightOpen } from 'lucide-react'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
@@ -129,23 +129,51 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   )
 }
 
+const LANGS: [Lang, string][] = [
+  ['curl', 'cURL'],
+  ['js', 'JavaScript'],
+  ['python', 'Python'],
+]
+
 function CodeBox({ req }: { req: ApiRequest }) {
   const [lang, setLang] = useContext(LangContext)
   const code = snippet(lang, req)
+  // sliding highlight: measure the selected button, move a blue pill behind it
+  const buttons = useRef<Record<string, HTMLButtonElement | null>>({})
+  const [pill, setPill] = useState({ left: 0, width: 0 })
+  useLayoutEffect(() => {
+    const measure = () => {
+      const b = buttons.current[lang]
+      if (b) setPill({ left: b.offsetLeft, width: b.offsetWidth })
+    }
+    measure()
+    document.fonts.ready.then(measure) // re-measure once web fonts change the label widths
+  }, [lang])
+
   return (
     <div className="bg-si-ink p-2 text-si-paper">
-      <div className="mb-2 flex gap-1 border-b border-si-slate pb-2">
-        {(['curl', 'js', 'python'] as Lang[]).map((l) => (
-          <button key={l} onClick={() => setLang(l)} className={`rounded-full px-2.5 ${lang === l ? 'bg-si-blue' : 'bg-si-slate text-si-line'}`}>
-            {l}
+      <div className="relative mb-2 flex w-fit rounded-t-md bg-si-slate">
+        <span className="absolute inset-y-0 rounded-t-md bg-si-blue transition-all duration-300 ease-out" style={pill} />
+        {LANGS.map(([l, label]) => (
+          <button
+            key={l}
+            ref={(el) => {
+              buttons.current[l] = el
+            }}
+            onClick={() => setLang(l)}
+            className={`relative cursor-pointer px-2.5 hover:text-si-gold ${lang === l ? 'text-white' : 'text-si-line'}`}
+          >
+            {label}
           </button>
         ))}
-        <Copy text={code} />
       </div>
-      <pre
-        className="font-mono text-[11px] whitespace-pre-wrap text-si-mist wrap-anywhere"
-        dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: HLJS_LANG[lang] }).value }}
-      />
+      <div className="relative">
+        <Copy text={code} className="absolute top-0 right-0" />
+        <pre
+          className="pr-7 font-mono text-[11px] whitespace-pre-wrap text-si-mist wrap-anywhere"
+          dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: HLJS_LANG[lang] }).value }}
+        />
+      </div>
     </div>
   )
 }
@@ -163,14 +191,14 @@ function Raw({ result, loading }: { result: ApiResult | null; loading?: boolean 
   )
 }
 
-function Copy({ text }: { text: string }) {
+function Copy({ text, className = 'ml-auto' }: { text: string; className?: string }) {
   // toast is `fixed` at the button's screen position so scroll containers can't clip it; key replays the animation
   const [toast, setToast] = useState<{ x: number; y: number; key: number } | null>(null)
   if (!text) return null
   return (
     <button
       title="copy"
-      className="ml-auto cursor-pointer rounded-full bg-si-blue px-2 py-0.5 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink"
+      className={`${className} cursor-pointer rounded-full bg-si-blue p-1 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink`}
       onClick={(e) => {
         navigator.clipboard.writeText(text)
         const b = e.currentTarget.getBoundingClientRect()
@@ -324,7 +352,7 @@ export function SearchTab(props: {
               <textarea className={`${input} font-mono`} rows={2} value={form.fqs} onChange={set('fqs')} placeholder='["unit_code:NASM"]' />
             </Field>
             {err && <p className="text-red-700">{err}</p>}
-            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">Search</button>
+            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">search</button>
           </form>
           <CodeBox req={draft} />
         </>
@@ -414,7 +442,7 @@ export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: st
             <Field label="id / url">
               <input className={input} value={value} onChange={(e) => setInput(e.target.value)} placeholder="edanmdm:chndm_1949-17-1" />
             </Field>
-            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">Fetch</button>
+            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">fetch</button>
           </form>
           <CodeBox req={{ path: `/content/${value.trim() || ':id'}`, params: {} }} />
         </>
@@ -493,7 +521,7 @@ export function TermsTab({ top, run, onTerm }: { top: ReactNode; run: Run; onTer
               <input className={input} value={startsWith} onChange={(e) => setStartsWith(e.target.value)} placeholder="case-sensitive" />
             </Field>
             {(category === 'place' || category === 'topic') && !startsWith && <p className="text-si-gray">Tip: use starts_with, full list is ~4 MB.</p>}
-            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">Get terms</button>
+            <button className="bg-si-blue px-3 py-1 text-sm text-white hover:bg-si-teal">get terms</button>
           </form>
           <CodeBox req={req(category, startsWith.trim())} />
         </>
