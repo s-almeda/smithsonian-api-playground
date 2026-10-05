@@ -15,6 +15,7 @@ export interface ApiResult {
   text: string
   json: unknown // undefined when the body isn't JSON
   error?: string
+  keyError?: boolean // api.data.gov rejected the key (API_KEY_MISSING / API_KEY_INVALID / ...)
 }
 
 export function buildUrl(req: ApiRequest, apiKey: string): string {
@@ -41,9 +42,10 @@ export async function callApi(req: ApiRequest, apiKey: string): Promise<ApiResul
   } catch {
     /* not JSON (e.g. firewall HTML page) */
   }
-  const j = json as { error?: { message?: string }; response?: { error?: string } } | undefined
+  const j = json as { error?: { code?: string; message?: string }; response?: { error?: string } } | undefined
   const error = j?.error?.message ?? j?.response?.error ?? (status === 200 ? undefined : `HTTP ${status || 'network error'}`)
-  return { request: req, status, ms: Math.round(performance.now() - t0), text, json, error }
+  const keyError = !!j?.error?.code?.startsWith('API_KEY')
+  return { request: req, status, ms: Math.round(performance.now() - t0), text, json, error, keyError }
 }
 
 // ─── Code snippets ───────────────────────────────────────────────────────────

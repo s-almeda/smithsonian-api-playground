@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
-import { callApi, SIGNUP_URL, useApiKey, type ApiRequest, type Lang } from './api'
-import { DEFAULT_SEARCH, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery } from './tabs'
+import { callApi, useApiKey, type ApiRequest, type Lang } from './api'
+import { DEFAULT_SEARCH, GetKey, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery } from './tabs'
 
 type Tab = 'search' | 'item' | 'terms'
 
@@ -72,17 +72,7 @@ export default function App() {
               placeholder={fromEnv ? 'using key from .env' : 'your API key'}
               onBlur={(e) => save(e.target.value)}
             />
-            <div className="mt-1.5 flex items-center justify-end gap-2">
-              don't have an API key?
-              <a
-                href={SIGNUP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-si-blue px-2.5 py-0.5 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink"
-              >
-                get your API key here
-              </a>
-            </div>
+            <GetKey className="mt-1.5 justify-end" />
           </div>
         </div>
       </header>

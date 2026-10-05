@@ -5,7 +5,7 @@ import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
 import python from 'highlight.js/lib/languages/python'
 import 'highlight.js/styles/github-dark.css' // token colors for the code snippets
-import { fieldsOf, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
+import { SIGNUP_URL, fieldsOf, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
 
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('javascript', javascript)
@@ -251,10 +251,32 @@ function useResult(query: unknown, req: () => ApiRequest | null, run: Run) {
   return { result, loading, response: (result?.json as { response?: any } | undefined)?.response }
 }
 
-function Status({ loading, result }: { loading: boolean; result: ApiResult | null }) {
+/** "don't have an API key? [get your API key here]" — used in the header and on key errors */
+export function GetKey({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-2 ${className}`}>
+      don't have an API key?
+      <a
+        href={SIGNUP_URL}
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full bg-si-blue px-2.5 py-0.5 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink"
+      >
+        get your API key here
+      </a>
+    </div>
+  )
+}
+
+function Status({ loading, result }: { loading?: boolean; result: ApiResult | null }) {
   if (loading) return <p className="text-si-gray">Loading…</p>
-  if (result?.error) return <p className="text-red-700">{result.error}</p>
-  return null
+  if (!result?.error) return null
+  return (
+    <>
+      {result.keyError && <GetKey className="border border-si-line bg-white p-2" />}
+      <p className="text-red-700">{result.error}</p>
+    </>
+  )
 }
 
 // ─── Search ──────────────────────────────────────────────────────────────────
@@ -594,7 +616,7 @@ export function StatsPanel({ apiKey, run, onUnit }: { apiKey: string; run: Run; 
       }
       center={
         <>
-          {result?.error && <p className="text-red-700">{result.error}</p>}
+          <Status result={result} />
           {stats && (
             <>
               <p className="text-si-gray">
