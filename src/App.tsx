@@ -128,7 +128,7 @@ export default function App() {
           </div>
           <div className="relative text-right text-xs text-slate-400">
             {/* absolute so it floats above the field without making the header taller */}
-            {!invite && <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-slate-300">enter your API key here</p>}
+            <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-slate-300">enter your API key here</p>
             <input
               type="password"
               className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray disabled:cursor-not-allowed disabled:opacity-60"
