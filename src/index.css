@@ -1,41 +1,9 @@
 @import 'tailwindcss';
 
-@font-face {
-  font-family: 'Basier Circle';
-  src: url('/fonts/BasierCircle-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Minion Pro';
-  src: url('/fonts/MinionPro-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Minion Pro';
-  src: url('/fonts/MinionPro-It.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Minion Pro';
-  src: url('/fonts/MinionPro-Semibold.otf') format('opentype');
-  font-weight: 600;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Minion Pro';
-  src: url('/fonts/MinionPro-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-display: swap;
-}
-
 @theme {
   /* ── FONTS: swap these to try different fonts ── */
-  --font-sans: 'Basier Circle', ui-sans-serif, system-ui, sans-serif; /* UI text */
-  --font-serif: 'Minion Pro', Georgia, serif; /* "Smithsonian" + titles */
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* UI text */
+  --font-serif: 'Crimson Text', Georgia, serif; /* "Smithsonian" + titles (Google Fonts, loaded in index.html) */
   --font-hand: 'Comic Relief', system-ui; /* the "^" and "hm" */
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace; /* code */
 
