@@ -1,30 +1,91 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { callApi, useApiKey, type ApiRequest, type Lang } from './api'
-import { DEFAULT_SEARCH, GetKey, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery } from './tabs'
+import { DEFAULT_SEARCH, GetKey, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery, type TermsQuery } from './tabs'
 
 type Tab = 'search' | 'item' | 'terms'
 
-// shareable links: ?id=edanmdm:... opens that record in the content tab
-const linkedId = new URLSearchParams(location.search).get('id')
+// ─── URL ↔ state: every search / page / record / tab gets its own URL, so links are shareable and Back works
+//   ?q=moon&sort=newest&page=3      search (only non-default fields are written)
+//   ?id=edanmdm:nmah_1119490         content by id
+//   ?tab=terms&category=place&starts_with=Pho
+type UrlState = { tab: Tab; search: SearchQuery | null; item: ItemQuery | null; terms: TermsQuery | null }
+const SEARCH_FIELDS = Object.keys(DEFAULT_SEARCH) as (keyof SearchForm)[]
+
+function readUrl(): UrlState {
+  const p = new URLSearchParams(location.search)
+  const none = { search: null, item: null, terms: null }
+  const id = p.get('id')
+  if (id) return { ...none, tab: 'item', item: { id, n: 0 } }
+  if (p.get('tab') === 'item') return { ...none, tab: 'item' }
+  if (p.get('tab') === 'terms') {
+    const category = p.get('category')
+    return { ...none, tab: 'terms', terms: category ? { category, startsWith: p.get('starts_with') ?? '' } : null }
+  }
+  if (!p.has('q')) return { ...none, tab: 'search' }
+  const form = { ...DEFAULT_SEARCH }
+  for (const k of SEARCH_FIELDS) form[k] = p.get(k) ?? form[k]
+  return { ...none, tab: 'search', search: { form, page: Number(p.get('page')) || 1 } }
+}
+
+function writeUrl({ tab, search, item, terms }: UrlState): string {
+  const p = new URLSearchParams()
+  if (tab === 'item') {
+    if (item) p.set('id', item.id)
+    else p.set('tab', 'item')
+  } else if (tab === 'terms') {
+    p.set('tab', 'terms')
+    if (terms) p.set('category', terms.category)
+    if (terms?.startsWith) p.set('starts_with', terms.startsWith)
+  } else if (search) {
+    for (const k of SEARCH_FIELDS) if (k === 'q' || search.form[k] !== DEFAULT_SEARCH[k]) p.set(k, search.form[k])
+    if (search.page > 1) p.set('page', String(search.page))
+  }
+  const s = p.toString()
+  return s ? `?${s}` : ''
+}
+
+const initial = readUrl()
 
 export default function App() {
-  const { key, stored, fromEnv, save } = useApiKey()
-  const [tab, setTab] = useState<Tab>(linkedId ? 'item' : 'search')
+  const { key, invite, stored, fromEnv, save, forgetInvite } = useApiKey()
+  const [tab, setTab] = useState<Tab>(initial.tab)
   const lang = useState<Lang>('curl')
-  const run = useCallback((req: ApiRequest) => callApi(req, key), [key])
+  const run = useCallback((req: ApiRequest) => callApi(req, key, invite), [key, invite])
 
-  const [searchForm, setSearchForm] = useState<SearchForm>(DEFAULT_SEARCH)
-  const [searchQuery, setSearchQuery] = useState<SearchQuery | null>(null)
-  const [itemInput, setItemInput] = useState(linkedId ?? '')
-  const [itemQuery, setItemQuery] = useState<ItemQuery | null>(linkedId ? { id: linkedId, n: 0 } : null)
+  const [searchForm, setSearchForm] = useState<SearchForm>(initial.search?.form ?? DEFAULT_SEARCH)
+  const [searchQuery, setSearchQuery] = useState<SearchQuery | null>(initial.search)
+  const [itemInput, setItemInput] = useState(initial.item?.id ?? '')
+  const [itemQuery, setItemQuery] = useState<ItemQuery | null>(initial.item)
+  const [termsQuery, setTermsQuery] = useState<TermsQuery | null>(initial.terms)
 
-  // keep ?id= in the address bar in sync with the record being viewed
+  // state → URL: push a history entry whenever what you're looking at changes (typing alone doesn't)
+  const firstRun = useRef(true)
   useEffect(() => {
-    const url = new URL(location.href)
-    if (tab === 'item' && itemQuery) url.searchParams.set('id', itemQuery.id)
-    else url.searchParams.delete('id')
-    history.replaceState(null, '', url)
-  }, [tab, itemQuery])
+    const next = writeUrl({ tab, search: searchQuery, item: itemQuery, terms: termsQuery })
+    if (next === location.search) return
+    history[firstRun.current ? 'replaceState' : 'pushState'](null, '', next || location.pathname)
+    firstRun.current = false
+  }, [tab, searchQuery, itemQuery, termsQuery])
+
+  // URL → state on Back/Forward; keeps the existing query object when unchanged so nothing is refetched
+  useEffect(() => {
+    const onPop = () => {
+      const u = readUrl()
+      setTab(u.tab)
+      if (u.tab === 'search') {
+        const q = u.search && searchQuery && JSON.stringify(u.search) === JSON.stringify(searchQuery) ? searchQuery : u.search
+        setSearchQuery(q)
+        setSearchForm(q?.form ?? DEFAULT_SEARCH)
+      }
+      if (u.tab === 'item') {
+        if (u.item?.id !== itemQuery?.id) setItemQuery(u.item)
+        setItemInput(u.item?.id ?? '')
+      }
+      if (u.tab === 'terms' && JSON.stringify(u.terms) !== JSON.stringify(termsQuery)) setTermsQuery(u.terms)
+    }
+    window.addEventListener('popstate', onPop)
+    return () => window.removeEventListener('popstate', onPop)
+  }, [searchQuery, itemQuery, termsQuery])
 
   const openItem = (id: string) => {
     setItemInput(id)
@@ -69,10 +130,19 @@ export default function App() {
               type="password"
               className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray"
               defaultValue={stored}
-              placeholder={fromEnv ? 'using key from .env' : 'your API key'}
+              placeholder={invite ? 'using shared key (invite link)' : fromEnv ? 'using key from .env' : 'your API key'}
               onBlur={(e) => save(e.target.value)}
             />
-            <GetKey className="mt-1.5 justify-end" />
+            {invite ? (
+              <p className="mt-1.5">
+                invite link active ·{' '}
+                <button onClick={forgetInvite} className="cursor-pointer underline hover:text-si-gold">
+                  stop using it
+                </button>
+              </p>
+            ) : (
+              <GetKey className="mt-1.5 justify-end" />
+            )}
           </div>
         </div>
       </header>
@@ -85,9 +155,9 @@ export default function App() {
           <ItemTab top={tabs} input={itemInput} setInput={setItemInput} query={itemQuery} setQuery={setItemQuery} run={run} />
         </div>
         <div className={tab === 'terms' ? '' : 'hidden'}>
-          <TermsTab top={tabs} run={run} onTerm={searchFq} />
+          <TermsTab top={tabs} query={termsQuery} setQuery={setTermsQuery} run={run} onTerm={searchFq} />
         </div>
-        <StatsPanel apiKey={key} run={run} onUnit={searchFq} />
+        <StatsPanel apiKey={key || invite} run={run} onUnit={searchFq} />
       </main>
       </div>
     </LangContext.Provider>

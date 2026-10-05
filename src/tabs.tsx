@@ -328,7 +328,7 @@ export function SearchTab(props: {
 }) {
   const { top, form, setForm, query, setQuery, run, onOpen } = props
   const { result, loading, response } = useResult(query, () => query && searchRequest(query), run)
-  const rows: EdanRecord[] = response?.rows ?? []
+  const rows: EdanRecord[] = (query && response?.rows) || []
   const lastPage = query ? Math.max(1, Math.ceil((response?.rowCount ?? 0) / (Number(query.form.rows) || 10))) : 1
   const set = (k: keyof SearchForm) => (e: { target: { value: string } }) => setForm({ ...form, [k]: e.target.value })
   const err = fqsError(form.fqs)
@@ -520,10 +520,19 @@ export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: st
 
 // ─── Terms ───────────────────────────────────────────────────────────────────
 
-export function TermsTab({ top, run, onTerm }: { top: ReactNode; run: Run; onTerm: (fq: string) => void }) {
-  const [category, setCategory] = useState('unit_code')
-  const [startsWith, setStartsWith] = useState('')
-  const [query, setQuery] = useState<{ category: string; startsWith: string } | null>(null)
+export type TermsQuery = { category: string; startsWith: string }
+
+export function TermsTab(props: { top: ReactNode; query: TermsQuery | null; setQuery: (q: TermsQuery) => void; run: Run; onTerm: (fq: string) => void }) {
+  const { top, query, setQuery, run, onTerm } = props
+  const [category, setCategory] = useState(query?.category ?? 'unit_code')
+  const [startsWith, setStartsWith] = useState(query?.startsWith ?? '')
+  // back/forward can change the query from outside: mirror it into the form
+  useEffect(() => {
+    if (query) {
+      setCategory(query.category)
+      setStartsWith(query.startsWith)
+    }
+  }, [query])
   const req = (c: string, s: string): ApiRequest => ({ path: `/terms/${c}`, params: { starts_with: s } })
   const { result, loading, response } = useResult(query, () => query && req(query.category, query.startsWith), run)
   const terms: string[] = response?.terms ?? []

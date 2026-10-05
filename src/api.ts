@@ -25,12 +25,17 @@ export function buildUrl(req: ApiRequest, apiKey: string): string {
   return url.toString()
 }
 
-export async function callApi(req: ApiRequest, apiKey: string): Promise<ApiResult> {
+/** Calls the API directly with `apiKey`, or — for invite-link visitors — through the /api/si proxy, which adds the owner's key server-side. */
+export async function callApi(req: ApiRequest, apiKey: string, invite = ''): Promise<ApiResult> {
   const t0 = performance.now()
   let status = 0
   let text = ''
   try {
-    const res = await fetch(buildUrl(req, apiKey))
+    const res = invite
+      ? await fetch(`/api/si?${new URLSearchParams({ path: req.path, ...Object.fromEntries(Object.entries(req.params).filter(([, v]) => v)) })}`, {
+          headers: { 'x-invite-token': invite },
+        })
+      : await fetch(buildUrl(req, apiKey))
     status = res.status
     text = await res.text()
   } catch (e) {
@@ -44,7 +49,7 @@ export async function callApi(req: ApiRequest, apiKey: string): Promise<ApiResul
   }
   const j = json as { error?: { code?: string; message?: string }; response?: { error?: string } } | undefined
   const error = j?.error?.message ?? j?.response?.error ?? (status === 200 ? undefined : `HTTP ${status || 'network error'}`)
-  const keyError = !!j?.error?.code?.startsWith('API_KEY')
+  const keyError = !!j?.error?.code?.startsWith('API_KEY') || j?.error?.code === 'INVITE_INVALID'
   return { request: req, status, ms: Math.round(performance.now() - t0), text, json, error, keyError }
 }
 
@@ -103,10 +108,26 @@ export function fieldsOf(r: EdanRecord): { label: string; content: string }[] {
   return Object.values(r.content.freetext ?? {}).flat()
 }
 
-// ─── API key: browser (localStorage) overrides VITE_SI_API_KEY from .env ─────
+// ─── API key: own key (localStorage) > invite link (proxy) > VITE_SI_API_KEY from .env ─────
 
 const STORAGE_KEY = 'si-playground:api-key'
+const INVITE_STORAGE_KEY = 'si-playground:invite'
 const ENV_KEY = (import.meta.env.VITE_SI_API_KEY as string | undefined) ?? ''
+
+// ?invite=<token> → remember it in this browser and tidy it out of the address bar (runs once, before the app reads the URL)
+{
+  const url = new URL(location.href)
+  const token = url.searchParams.get('invite')
+  if (token) {
+    try {
+      localStorage.setItem(INVITE_STORAGE_KEY, token)
+    } catch {
+      /* storage unavailable */
+    }
+    url.searchParams.delete('invite')
+    history.replaceState(null, '', url)
+  }
+}
 
 export function useApiKey() {
   const [stored, setStored] = useState(() => {
@@ -124,5 +145,21 @@ export function useApiKey() {
       /* storage unavailable */
     }
   }
-  return { key: stored || ENV_KEY, stored, fromEnv: !stored && !!ENV_KEY, save }
+  const [inviteToken, setInviteToken] = useState(() => {
+    try {
+      return localStorage.getItem(INVITE_STORAGE_KEY) ?? ''
+    } catch {
+      return ''
+    }
+  })
+  const forgetInvite = () => {
+    setInviteToken('')
+    try {
+      localStorage.removeItem(INVITE_STORAGE_KEY)
+    } catch {
+      /* storage unavailable */
+    }
+  }
+  const invite = stored ? '' : inviteToken // your own key always wins
+  return { key: stored || (invite ? '' : ENV_KEY), invite, stored, fromEnv: !stored && !invite && !!ENV_KEY, save, forgetInvite }
 }
