@@ -128,16 +128,17 @@ export default function App() {
           <div className="text-right text-xs text-si-line">
             <input
               type="password"
-              className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray"
+              className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray disabled:cursor-not-allowed disabled:opacity-60"
               defaultValue={stored}
-              placeholder={invite ? 'using shared key (invite link)' : fromEnv ? 'using key from .env' : 'your API key'}
+              placeholder={invite ? "using shm's key" : fromEnv ? 'using key from .env' : 'your API key'}
+              disabled={!!invite}
               onBlur={(e) => save(e.target.value)}
             />
             {invite ? (
               <p className="mt-1.5">
-                invite link active ·{' '}
+                shm sent you this invite link to let you indirectly use their api key! be nice! ·{' '}
                 <button onClick={forgetInvite} className="cursor-pointer underline hover:text-si-gold">
-                  stop using it
+                  log out
                 </button>
               </p>
             ) : (
