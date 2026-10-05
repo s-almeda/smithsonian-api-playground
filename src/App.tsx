@@ -119,18 +119,20 @@ export default function App() {
             <h1 className="font-serif text-[2rem] leading-none">
               S
               <span className="relative -mx-[0.15em] font-hand text-shm-green">
-                ^<span className="absolute bottom-[2.2em] left-1/2 -translate-x-1/2 -rotate-8 font-hand text-[0.6em] font-bold">h</span>
+                ^<span className="absolute bottom-[1.9em] left-1/2 -translate-x-1/2 -rotate-8 font-hand text-[0.6em] font-bold">h</span>
               </span>
               mithsonian Open Access
             </h1>
             <p className="font-hand text-base tracking-[0.12em]">API playground prototype by shm :3</p>
           </div>
-          <div className="text-right text-xs text-si-line">
+          <div className="relative text-right text-xs text-si-line">
+            {/* absolute so it floats above the field without making the header taller */}
+            {!invite && <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-white">enter your API key here</p>}
             <input
               type="password"
               className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray disabled:cursor-not-allowed disabled:opacity-60"
               defaultValue={stored}
-              placeholder={invite ? "using shm's key" : fromEnv ? 'using key from .env' : 'your API key'}
+              placeholder={invite ? "using shm's key" : fromEnv ? 'running locally, using key in .env' : 'your API key'}
               disabled={!!invite}
               onBlur={(e) => save(e.target.value)}
             />

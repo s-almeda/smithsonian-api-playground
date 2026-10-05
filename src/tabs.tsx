@@ -625,6 +625,7 @@ export function StatsPanel({ apiKey, run, onUnit }: { apiKey: string; run: Run; 
       }
       center={
         <>
+          {!apiKey && <p className="text-si-gray">stats will appear here; you'll have to enter your API key in the top right first, tho</p>}
           <Status result={result} />
           {stats && (
             <>
