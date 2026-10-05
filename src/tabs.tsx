@@ -91,6 +91,12 @@ const DOCS: Record<string, { group: string; path: string; text: string; params: 
 function DocNote({ name }: { name: string }) {
   const d = DOCS[name]
   const [open, setOpen] = useState(false)
+  // only offer "show more" when the collapsed text is actually cut off
+  const body = useRef<HTMLDivElement>(null)
+  const [clipped, setClipped] = useState(false)
+  useLayoutEffect(() => {
+    if (!open && body.current) setClipped(body.current.scrollHeight > body.current.clientHeight)
+  }, [name, open])
   return (
     <div className="border border-si-line bg-si-paper p-2">
       <div className="flex">
@@ -99,7 +105,7 @@ function DocNote({ name }: { name: string }) {
           view in apidocs ↗
         </a>
       </div>
-      <div className={open ? '' : 'max-h-16 overflow-hidden'}>
+      <div ref={body} className={open ? '' : 'max-h-16 overflow-hidden'}>
         <p className="mt-1">{d.text}</p>
         {d.params.length > 0 && (
           <dl className="mt-1 space-y-1 text-si-gray">
@@ -111,7 +117,7 @@ function DocNote({ name }: { name: string }) {
           </dl>
         )}
       </div>
-      {d.params.length > 0 && (
+      {(clipped || open) && (
         <button onClick={() => setOpen(!open)} className="mt-1 cursor-pointer text-si-teal underline">
           {open ? 'show less' : 'show more'}
         </button>
@@ -151,8 +157,9 @@ function CodeBox({ req }: { req: ApiRequest }) {
   }, [lang])
 
   return (
-    <div className="bg-si-ink p-2 text-si-paper">
-      <div className="relative mb-2 flex w-fit rounded-t-md bg-si-slate">
+    <div className="text-si-paper">
+      {/* folder tabs sit on the panel background, flush on top of the dark code area */}
+      <div className="relative flex w-fit rounded-t-md bg-si-slate">
         <span className="absolute inset-y-0 rounded-t-md bg-si-blue transition-all duration-300 ease-out" style={pill} />
         {LANGS.map(([l, label]) => (
           <button
@@ -161,14 +168,14 @@ function CodeBox({ req }: { req: ApiRequest }) {
               buttons.current[l] = el
             }}
             onClick={() => setLang(l)}
-            className={`relative cursor-pointer px-2.5 hover:text-si-gold ${lang === l ? 'text-white' : 'text-si-line'}`}
+            className={`relative cursor-pointer py-1 px-2.5 hover:text-si-gold ${lang === l ? 'text-white' : 'text-si-line'}`}
           >
             {label}
           </button>
         ))}
       </div>
-      <div className="relative">
-        <Copy text={code} className="absolute top-0 right-0" />
+      <div className="relative bg-si-ink p-2">
+        <Copy text={code} className="absolute top-2 right-2" />
         <pre
           className="pr-7 font-mono text-[11px] whitespace-pre-wrap text-si-mist wrap-anywhere"
           dangerouslySetInnerHTML={{ __html: hljs.highlight(code, { language: HLJS_LANG[lang] }).value }}
