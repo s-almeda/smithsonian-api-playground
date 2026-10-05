@@ -5,7 +5,7 @@ import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
 import python from 'highlight.js/lib/languages/python'
 import 'highlight.js/styles/github-dark.css' // token colors for the code snippets
-import { SIGNUP_URL, fieldsOf, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
+import { SIGNUP_URL, cleanTitle, fieldsOf, withheldMedia, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
 
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('javascript', javascript)
@@ -404,9 +404,15 @@ export function SearchTab(props: {
               return (
                 <button key={r.id} onClick={() => onOpen(r.url)} className="border border-si-line bg-white text-left hover:border-si-blue">
                   <div className="flex aspect-square items-center justify-center bg-si-mist text-si-gray">
-                    {src ? <img src={src} alt="" loading="lazy" className="size-full object-contain" /> : 'no image'}
+                    {src ? (
+                      <img src={src} alt="" loading="lazy" className="size-full object-contain" />
+                    ) : withheldMedia(r) ? (
+                      `${withheldMedia(r)} · not open access`
+                    ) : (
+                      'no image'
+                    )}
                   </div>
-                  <p className="line-clamp-2 p-1.5">{r.title}</p>
+                  <p className="line-clamp-2 p-1.5">{cleanTitle(r.title)}</p>
                 </button>
               )
             })}
@@ -484,7 +490,7 @@ export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: st
           {!query && <p className="text-si-gray">Click a search result or enter an id.</p>}
           {r && !loading && (
             <>
-              <h2 className="font-serif text-2xl">{r.title}</h2>
+              <h2 className="font-serif text-2xl">{cleanTitle(r.title)}</h2>
               <p className="text-si-gray">
                 {r.unitCode} · {r.type}
                 {link && (
@@ -501,7 +507,20 @@ export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: st
               ) : (
                 src && <img src={src} alt="" className="max-h-[50vh] bg-white" />
               )}
+              {withheldMedia(r) && (
+                <p className="border border-si-line bg-white p-2">
+                  This record has {withheldMedia(r)}, but it isn't open access, so we can't share or access it via API.{' '}
+                  <br></br>
+                  {link && (
+                    <a href={link} target="_blank" rel="noreferrer" className="text-si-teal underline">
+                      {withheldMedia(r) === 'images' ? 'View' : '▶ click to watch/listen'} on the official record page
+                    </a>
+                  )}
+                </p>
+              )}
               <dl className="grid grid-cols-[9rem_1fr] gap-x-3">
+                <dt className="text-si-gray">raw title</dt>
+                <dd className="font-mono">{r.title}</dd>
                 {fieldsOf(r).map((f, i) => (
                   <Fragment key={i}>
                     <dt className="text-si-gray">{f.label}</dt>

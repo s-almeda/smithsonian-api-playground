@@ -92,8 +92,24 @@ export interface EdanRecord {
       record_link?: string
       online_media?: { media?: { type: string; content?: string; thumbnail?: string }[] }
     }
+    indexedStructured?: { online_media_type?: string[] }
     freetext?: Record<string, { label: string; content: string }[]>
   }
+}
+
+/** Titles sometimes contain HTML (e.g. "<I>Home Movie #19</I>"): strip tags and decode entities for display. */
+export function cleanTitle(title: string): string {
+  return new DOMParser().parseFromString(title, 'text/html').body.textContent ?? title
+}
+
+/** Media the record is tagged with but that the API withheld (not CC0, so `online_media` is missing). */
+export function withheldMedia(r: EdanRecord): string | undefined {
+  if (r.content.descriptiveNonRepeating?.online_media?.media?.length) return undefined
+  const types = r.content.indexedStructured?.online_media_type ?? []
+  if (types.includes('Video recordings')) return 'video'
+  if (types.includes('Sound recordings')) return 'audio'
+  if (types.includes('Images')) return 'images'
+  return undefined
 }
 
 /** First CC0 image (IDS URLs resize with a `/N` suffix) or 3D thumbnail. */
