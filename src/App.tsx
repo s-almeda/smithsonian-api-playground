@@ -116,18 +116,19 @@ export default function App() {
       <header className="bg-si-ink text-si-paper">
         <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-3 px-4 pt-9 pb-3">
           <div>
-            <h1 className="font-serif text-[2rem] leading-none">
-              S
+              <h1 className="font-serif text-[2rem] leading-none">
+              <img src="favicon.png" alt="silly little sun" className="mr-1 inline-block h-[0.85em] w-auto align-baseline" />
+                S
               <span className="relative -mx-[0.15em] font-hand text-shm-green">
                 ^<span className="absolute bottom-[1.9em] left-1/2 -translate-x-1/2 -rotate-8 font-hand text-[0.6em] font-bold">h</span>
               </span>
               mithsonian Open Access
             </h1>
-            <p className="font-hand text-base tracking-[0.12em]">API playground prototype by shm :3</p>
+            <p className="font-hand text-slate-400 tracking-[0.12em]">API playground prototype by shm :3</p>
           </div>
-          <div className="relative text-right text-xs text-si-line">
+          <div className="relative text-right text-xs text-slate-400">
             {/* absolute so it floats above the field without making the header taller */}
-            {!invite && <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-white">enter your API key here</p>}
+            {!invite && <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-slate-300">enter your API key here</p>}
             <input
               type="password"
               className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray disabled:cursor-not-allowed disabled:opacity-60"

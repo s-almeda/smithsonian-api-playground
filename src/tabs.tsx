@@ -255,14 +255,14 @@ function useResult(query: unknown, req: () => ApiRequest | null, run: Run) {
 export function GetKey({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      don't have an API key?
+      don't have one?
       <a
         href={SIGNUP_URL}
         target="_blank"
         rel="noreferrer"
         className="rounded-full bg-si-blue px-2.5 py-0.5 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink"
       >
-        get your API key here
+        get your API key here!
       </a>
     </div>
   )
