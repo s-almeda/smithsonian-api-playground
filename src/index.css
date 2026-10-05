@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Basier Circle';
+  src: url('/fonts/BasierCircle-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Minion Pro';
+  src: url('/fonts/MinionPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Minion Pro';
+  src: url('/fonts/MinionPro-It.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Minion Pro';
+  src: url('/fonts/MinionPro-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Minion Pro';
+  src: url('/fonts/MinionPro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  /* ── FONTS: swap these to try different fonts ── */
+  --font-sans: 'Basier Circle', ui-sans-serif, system-ui, sans-serif; /* UI text */
+  --font-serif: 'Minion Pro', Georgia, serif; /* "Smithsonian" + titles */
+  --font-hand: 'Comic Relief', system-ui; /* the "^" and "hm" */
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace; /* code */
+
+  --color-si-blue: #009cde;
+  --color-si-teal: #165c7d;
+  --color-si-ink: #101820;
+  --color-si-slate: #333f48;
+  --color-si-gray: #75787b;
+  --color-si-paper: #efefef;
+  --color-si-mist: #e2e8ec;
+  --color-si-line: #d0d7de;
+  --color-si-gold: #f0b323;
+  --color-shm-green: #b4dd1e; /* green for "^" / "hm" */
+
+  /* "copied to clipboard" toast: use as `animate-float-up` */
+  --animate-float-up: float-up 1.8s ease-out forwards;
+  @keyframes float-up {
+    0% { opacity: 0; transform: translateY(0.25rem); }
+    10% { opacity: 1; transform: translateY(0); }
+    65% { opacity: 1; transform: translateY(-0.5rem); } /* hovers visibly */
+    100% { opacity: 0; transform: translateY(-1.25rem); }
+  }
+}

@@ -1,0 +1,524 @@
+{
+    "status": 200,
+    "responseCode": 1,
+    "response": {
+        "rows": [
+            {
+                "id": "ebl-1503512583183-1503512583188-0",
+                "title": "Fred Harvey Company collection of Carl Moon Southwest photographs",
+                "unitCode": "NMAIA",
+                "type": "ead_collection",
+                "url": "ead_collection:sova-nmai-ac-090",
+                "content": {
+                    "id": "sova.nmai.ac.090",
+                    "guid": "https://n2t.net/ark:/65665/sv4053c0c32-e2a1-4111-8439-644e9b5d4db4",
+                    "type": "ead_collection",
+                    "boost": "6",
+                    "level": "collection",
+                    "title": "Fred Harvey Company collection of Carl Moon Southwest photographs",
+                    "freetext": {
+                        "name": [
+                            {
+                                "flag": [
+                                    "personal_name",
+                                    "personal_main"
+                                ],
+                                "label": "Photographer",
+                                "content": "Moon, Carl, 1878-1948",
+                                "indexedContent": "Moon, Carl"
+                            },
+                            {
+                                "flag": [
+                                    "corporate_name",
+                                    "corporate_main"
+                                ],
+                                "label": "Publisher",
+                                "content": "Fred Harvey (Firm)",
+                                "indexedContent": "Fred Harvey (Firm)"
+                            }
+                        ],
+                        "place": [
+                            {
+                                "label": "Place",
+                                "content": "San Felipe Pueblo (N.M.)",
+                                "indexedContent": "San Felipe Pueblo (N.M.)"
+                            },
+                            {
+                                "label": "Place",
+                                "content": "Arizona",
+                                "indexedContent": "Arizona"
+                            },
+                            {
+                                "label": "Place",
+                                "content": "New Mexico",
+                                "indexedContent": "New Mexico"
+                            }
+                        ],
+                        "topic": [
+                            {
+                                "label": "Topic",
+                                "content": "Indians of North America -- Arizona",
+                                "indexedContent": "Indians of North America"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Indians of North America -- New Mexico",
+                                "indexedContent": "Indians of North America"
+                            }
+                        ],
+                        "acqinfo": [
+                            {
+                                "label": "Provenance",
+                                "content": "Donated to the Museum of the American Indian by the Fred Harvey Company in 1963."
+                            }
+                        ],
+                        "creator": [
+                            {
+                                "label": "Photographer",
+                                "content": "Moon, Carl, 1878-1948"
+                            },
+                            {
+                                "label": "Publisher",
+                                "content": "Fred Harvey (Firm)"
+                            }
+                        ],
+                        "culture": [
+                            {
+                                "label": "Culture",
+                                "content": "Havasupai (Coconino)",
+                                "indexedContent": "Havasupai (Coconino)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Hopi Pueblo",
+                                "indexedContent": "Hopi Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "A:shiwi (Zuni)",
+                                "indexedContent": "A:shiwi (Zuni)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Acoma Pueblo",
+                                "indexedContent": "Acoma Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Din\u00e9 (Navajo)",
+                                "indexedContent": "Din\u00e9 (Navajo)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Tesuque Pueblo",
+                                "indexedContent": "Tesuque Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "White Mountain Apache",
+                                "indexedContent": "White Mountain Apache"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Isleta Pueblo",
+                                "indexedContent": "Isleta Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Hopi [Sipaulovi]",
+                                "indexedContent": "Hopi [Sipaulovi]"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Kewa (Santo Domingo Pueblo)",
+                                "indexedContent": "Kewa (Santo Domingo Pueblo)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "K'apovi (Santa Clara Pueblo)",
+                                "indexedContent": "K'apovi (Santa Clara Pueblo)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Ohkay Owingeh (San Juan Pueblo)",
+                                "indexedContent": "Ohkay Owingeh (San Juan Pueblo)"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Laguna Pueblo",
+                                "indexedContent": "Laguna Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "Taos Pueblo",
+                                "indexedContent": "Taos Pueblo"
+                            },
+                            {
+                                "label": "Culture",
+                                "content": "San Ildefonso Pueblo",
+                                "indexedContent": "San Ildefonso Pueblo"
+                            }
+                        ],
+                        "setName": [
+                            {
+                                "label": "See more items in",
+                                "content": "Fred Harvey Company collection of Carl Moon Southwest photographs",
+                                "indexedContent": "Fred Harvey Company collection of Carl Moon Southwest photographs"
+                            }
+                        ],
+                        "abstract": [
+                            {
+                                "label": "Summary",
+                                "content": "This collection contains photographs that were commissioned by Fred Harvey Co. and shot by Carl Moon circa 1907-1914. The photographs depict American Indian communities in the southwest including A:shiwi (Zuni), Acoma Pueblo, Din\u00e9 (Navajo), Hopi, Laguna Pueblo, and Taos Pueblo among many others."
+                            }
+                        ],
+                        "bioghist": [
+                            {
+                                "label": "Biographical / Historical",
+                                "content": "Born in 1878 in Wilmington, Ohio, Carl E. Moon (originally spelled Karl) took up photography after serving with the Ohio National Guard. He moved to Albuquerque, N.M. in 1903 and opened a photograph studio where he began photographing American Indians in the U.S. southwest region. After publishing and exhibiting many of his photographs nationally, he was commissioned by the Fred Harvey Company in 1907 to take photographs of American Indian communities in the southwest. The Fred Harvey Company was founded by Frederick Henry Harvey and consisted of a chain of successful gift shops, restaurants, and hotels know as Harvey Houses. Moon photographed individuals in his El Tovar Studio in the Grand Canyon, Ariz. and also traveled to communities in the region including A:shiwi (Zuni), Din\u00e9 (Navajo), Hopi, and Laguna Pueblo, among many others. The Fred Harvey Company used these photographs in their postcards, brochures, and publications for the tourist industry. The Fred Harvey Company also partnered with the Sante Fe Railroad to help generate tourism to the southwest region and Moon became the official photographer for the railroad. Moon also took up drawing and painting and studied with American painter Thomas Moran. Moon stayed with the Fred Harvey Company until 1914. \n\nAfter Moon left the Fred Harvey Company, he opened a studio in Pasadena, California and continued his career as a photographer and painter. During this period, Moon painted and donated 26 works depicting Southwest American Indians to the Smithsonian Institution (now in the Smithsonian American Art Museum's collection). He also sold 24 oil paintings and 293 photographic prints to Henry E. Huntington that are now part of the Huntington Library in San Marino California. With his wife Grace Purdie Moon, he also produced and illustrated children's books of collected Native American stories and legends. Moon died in San Francisco, Calif. in 1948."
+                            }
+                        ],
+                        "physdesc": [
+                            {
+                                "label": "Extent",
+                                "content": "434 Photographs"
+                            }
+                        ],
+                        "unitdate": [
+                            {
+                                "flag": [
+                                    "datechar:creation",
+                                    "era:ce",
+                                    "normal:1905/1914",
+                                    "type:inclusive"
+                                ],
+                                "label": "Date",
+                                "content": "1907-1914",
+                                "indexedContent": "1905/1914"
+                            }
+                        ],
+                        "container": [
+                            {
+                                "label": "Container",
+                                "content": "Box 1"
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Archival Repository",
+                                "content": "National Museum of the American Indian",
+                                "indexedContent": "National Museum of the American Indian"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Identifier",
+                                "content": "NMAI.AC.090"
+                            }
+                        ],
+                        "objectType": [
+                            {
+                                "label": "Type",
+                                "content": "Collection descriptions",
+                                "indexedContent": "Collection descriptions"
+                            },
+                            {
+                                "label": "Type",
+                                "content": "Archival materials",
+                                "indexedContent": "Archival materials"
+                            },
+                            {
+                                "label": "Type",
+                                "content": "Photographs",
+                                "indexedContent": "Photographs"
+                            },
+                            {
+                                "label": "Type",
+                                "content": "Photographs",
+                                "indexedContent": "Photographs"
+                            }
+                        ],
+                        "prefercite": [
+                            {
+                                "label": "Citation",
+                                "content": "Identification of specific item; Date (if known); Fred Harvey Company collection of Carl Moon Southwest photographs, Box and Photo Number; National Museum of the American Indian Archive Center, Smithsonian Institution."
+                            }
+                        ],
+                        "arrangement": [
+                            {
+                                "label": "Arrangement",
+                                "content": "The collection is arranged into 17 series by culture group or location. Series 1: A:shiwi (Zuni), Series 2: Acoma Pueblo, Series 3: Din\u00e9 (Navajo), Series 4: Havasupai (Coconino), Series 5: Hopi, Series 6: Isleta Pueblo, Series 7: K'apovi (Santa Clara Pueblo), Series 8: Kewa (Santa Domingo Pueblo), Series 9: Laguna Pueblo, Series 10: Nambe Pueblo, Series 11: Ohkay Owingeh (San Juan Pueblo), Series 12: San Felipe Pueblo, Series 13: San Ildefonso Pueblo, Series 14: Taos Pueblo, Series 15: Tesuque Pueblo, Series 16: White Mountain Apache, Series 17: Grand Canyon National Park, Arizona\n\nThe collection is physically arranged first by collection type (transparencies and negatives) and then in photo numeric order."
+                            }
+                        ],
+                        "processinfo": [
+                            {
+                                "label": "Processing Information",
+                                "content": "Processed by Emily Moazami, Assistant Head Archivist in 2017."
+                            }
+                        ],
+                        "userestrict": [
+                            {
+                                "label": "Rights",
+                                "content": "Single photocopies may be made for research purposes. Permission to publish or broadcast materials from the collection must be requested from National Museum of the American Indian Archive Center. Please submit a written request to nmaiarchives@si.edu."
+                            },
+                            {
+                                "label": "Rights",
+                                "content": "Some images restricted: Cultural Sensitivity."
+                            }
+                        ],
+                        "scopecontent": [
+                            {
+                                "label": "Scope and Contents",
+                                "content": "This collection contains 203 glass transparencies, 2 nitrate negatives, and 1 autochrome (plus 228 copy negatives and copy transparencies) that were commissioned by Fred Harvey Co. and shot by Carl moon circa 1905-1914. The photographs depict the southwest American Indian communities of A:shiwi (Zuni), Acoma Pueblo, Dine (Navajo), Havasupai (Coconino), Hopi Pueblo, Isleta Pueblo, K'apovi (Santa Clara Pueblo), Kewa (Santo Domingo Pueblo), Laguna Pueblo, Nambe Pueblo, Ohkay Owingeh (San Juan Pueblo), San Felipe Pueblo, San Ildefonso Pueblo, Taos Pueblo, Tesuque Pueblo, and White Mountain Apache. Some images were also shot in Grand Canyon National Park in Arizona. The photographs are a mix of portraits, posed action shots, and architecture shots. Some of the photographs appear to have been staged by the photographer. There are a few photographs in this collection that may have been shot by Moon prior to his employment with the Fred Harvey Company.\n\nThe copy negatives and transparencies were created by the Museum of the American Indian (NMAI's predecessor museum). There are sometimes multiple copy negatives and copy transparencies per glass plate transparency."
+                            }
+                        ],
+                        "accessrestrict": [
+                            {
+                                "label": "Restrictions",
+                                "content": "Access to NMAI Archive Center collections is by appointment only, Monday - Friday, 9:30 am - 4:30 pm. Please contact the archives to make an appointment (phone: 301-238-1400, email: nmaiarchives@si.edu)."
+                            }
+                        ],
+                        "relatedmaterial": [
+                            {
+                                "label": "Related Materials",
+                                "content": "The Huntington Library in San Marino California holds a large collection of Carl Moon works, including oil paintings and photographic prints. The University of Arizona Libraries, Special Collections also holds photographs shot by Carl Moon and the Smithsonian American Art Museum holds 26 Carl Moon paintings."
+                            }
+                        ],
+                        "separatedmaterial": [
+                            {
+                                "label": "Separated Materials",
+                                "content": "Two nitrate negatives are stored at an offsite storage facility."
+                            }
+                        ]
+                    },
+                    "language": [
+                        "eng"
+                    ],
+                    "record_id": "NMAI.AC.090",
+                    "containedIn": [
+                        {
+                            "url": "https://sova.si.edu/record/NMAI.AC.090",
+                            "type": "Collection",
+                            "unitid": "Collection NMAI.AC.090",
+                            "unittitle": "Fred Harvey Company collection of Carl Moon Southwest photographs"
+                        }
+                    ],
+                    "record_link": "https://n2t.net/ark:/65665/sv4053c0c32-e2a1-4111-8439-644e9b5d4db4",
+                    "filelocation": "https://sirismm.si.edu/EADs/NMAI.AC.090-ead.xml",
+                    "collection_id": "NMAI.AC.090",
+                    "fileSignature": "8b8394b7c681566c64d8ff5d918deb2abff696b2",
+                    "metadata_usage": {
+                        "access": "CC0"
+                    },
+                    "archival_repository": "NMAIA",
+                    "digital_assets_available": false
+                },
+                "hash": "60878d072099ddf98a23323998eaf0947b89f394",
+                "docSignature": "08624b8039bce2ea23b0420615574548",
+                "timestamp": "1656636602",
+                "lastTimeUpdated": "1742127961",
+                "version": "1742127902"
+            },
+            {
+                "id": "ebl-1790774100778-1790774101256-0",
+                "title": "Flying to the Moon and Other Strange Places Manuscript",
+                "unitCode": "NASMAC",
+                "type": "ead_collection",
+                "url": "ead_collection:sova-nasm-xxxx-0377",
+                "content": {
+                    "id": "sova.nasm.xxxx.0377",
+                    "guid": "https://n2t.net/ark:/65665/pg26197af90-b496-4ed7-ac0a-b2e82259cb41",
+                    "type": "ead_collection",
+                    "boost": "6.4",
+                    "level": "collection",
+                    "title": "Flying to the Moon and Other Strange Places Manuscript",
+                    "freetext": {
+                        "name": [
+                            {
+                                "flag": [
+                                    "personal_name",
+                                    "personal_main"
+                                ],
+                                "label": "Creator",
+                                "content": "Collins, Michael, 1930-2021",
+                                "indexedContent": "Collins, Michael"
+                            }
+                        ],
+                        "place": [
+                            {
+                                "label": "Place",
+                                "content": "Outer space -- Exploration",
+                                "indexedContent": "Outer space"
+                            }
+                        ],
+                        "topic": [
+                            {
+                                "label": "Topic",
+                                "content": "Astronautics",
+                                "indexedContent": "Astronautics"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Apollo 11 Flight",
+                                "indexedContent": "Apollo 11 Flight"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Gemini Project",
+                                "indexedContent": "Gemini Project"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Apollo Project",
+                                "indexedContent": "Apollo Project"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Moon",
+                                "indexedContent": "Moon"
+                            }
+                        ],
+                        "acqinfo": [
+                            {
+                                "label": "Provenance",
+                                "content": "Material found in collection, November 1992."
+                            }
+                        ],
+                        "creator": [
+                            {
+                                "label": "Creator",
+                                "content": "Collins, Michael, 1930-2021"
+                            }
+                        ],
+                        "setName": [
+                            {
+                                "label": "See more items in",
+                                "content": "Flying to the Moon and Other Strange Places Manuscript",
+                                "indexedContent": "Flying to the Moon and Other Strange Places Manuscript"
+                            }
+                        ],
+                        "abstract": [
+                            {
+                                "label": "Summary",
+                                "content": "Flying to the Moon and Other Strange Places was written by astronaut Michael Collins and published in 1976. The author discusses his early career, his training for space flight, his trips into space including the first lunar landing, and the possibilities for life and flight in space in the future."
+                            }
+                        ],
+                        "bioghist": [
+                            {
+                                "label": "Biographical / Historical",
+                                "content": "Michael Collins (1930 - 2021) served as a fighter pilot and an experimental test pilot at the Air Force Flight Test Center, Edwards Air Force Base from 1959-1963. He was one of the third group of astronauts named by NASA in October 1963. Collins was pilot on the three-day Gemini 10 mission in 1966, during which he became the nation's third spacewalker and set a world altitude record. His second flight was as command module pilot of the Apollo 11 mission in July 1969. He remained in lunar orbit while Neil Armstrong and Buzz Aldrin became the first men to walk on the moon. After leaving NASA in 1970, Collins became Assistant Secretary of State for Public Affairs and, in 1971, became the Director of the National Air and Space Museum, where he remained for seven years. Collins has received numerous decorations and awards and is the author of several books, including this, Flying to the Moon and Other Strange Places, which was released to critical acclaim in 1976."
+                            }
+                        ],
+                        "physdesc": [
+                            {
+                                "label": "Extent",
+                                "content": "0.05 Cubic feet (1 box)"
+                            }
+                        ],
+                        "unitdate": [
+                            {
+                                "flag": [
+                                    "datechar:creation",
+                                    "type:inclusive"
+                                ],
+                                "label": "Date",
+                                "content": "1976",
+                                "indexedContent": ""
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Archival Repository",
+                                "content": "National Air and Space Museum Archives",
+                                "indexedContent": "National Air and Space Museum Archives"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Identifier",
+                                "content": "NASM.XXXX.0377"
+                            }
+                        ],
+                        "objectType": [
+                            {
+                                "label": "Type",
+                                "content": "Collection descriptions",
+                                "indexedContent": "Collection descriptions"
+                            },
+                            {
+                                "label": "Type",
+                                "content": "Archival materials",
+                                "indexedContent": "Archival materials"
+                            }
+                        ],
+                        "prefercite": [
+                            {
+                                "label": "Citation",
+                                "content": "Flying to the Moon and Other Strange Places Manuscript, NASM.XXXX.0377, National Air and Space Museum, Smithsonian Institution."
+                            }
+                        ],
+                        "arrangement": [
+                            {
+                                "label": "Arrangement",
+                                "content": "Collection is a single item and divided into two folders."
+                            }
+                        ],
+                        "processinfo": [
+                            {
+                                "label": "Processing Information",
+                                "content": "Arranged, described, and encoded by Sarah LeClaire, 2026"
+                            }
+                        ],
+                        "userestrict": [
+                            {
+                                "label": "Rights",
+                                "content": "Material is subject to Smithsonian Terms of Use. Should you wish to use NASM material in any medium, please submit an Application for Permission to Reproduce NASM Material, available at Permissions Requests."
+                            }
+                        ],
+                        "scopecontent": [
+                            {
+                                "label": "Scope and Contents",
+                                "content": "This is the original, 179 page manuscript of Flying to the Moon and Other Strange Places, in which astronaut Michael Collins discusses his early career, his training for space flight, his trips into space including the first lunar landing, and the possibilities for life and flight in space in the future.The title page is signed by the author and features handwritten corrections by the proof reader."
+                            }
+                        ],
+                        "accessrestrict": [
+                            {
+                                "label": "Restrictions",
+                                "content": "No restrictions on access"
+                            }
+                        ]
+                    },
+                    "language": [
+                        "eng"
+                    ],
+                    "record_id": "NASM.XXXX.0377",
+                    "containedIn": [
+                        {
+                            "url": "https://sova.si.edu/record/NASM.XXXX.0377",
+                            "type": "Collection",
+                            "unitid": "Collection NASM.XXXX.0377",
+                            "unittitle": "Flying to the Moon and Other Strange Places Manuscript"
+                        }
+                    ],
+                    "record_link": "https://n2t.net/ark:/65665/pg26197af90-b496-4ed7-ac0a-b2e82259cb41",
+                    "filelocation": "https://sirismm.si.edu/EADs/NASM.XXXX.0377-ead.xml",
+                    "collection_id": "NASM.XXXX.0377",
+                    "fileSignature": "d9a39787855f2d6e25dcdb12329ea594a773ba21",
+                    "metadata_usage": {
+                        "access": "CC0"
+                    },
+                    "archival_repository": "NASMAC",
+                    "digital_assets_available": false
+                },
+                "hash": "a2451ecb4f26fd894b8315b11d473637af2df7ed",
+                "docSignature": "d9f22326f53da058a3ceefa56ed8f1a1",
+                "timestamp": "1790774160",
+                "lastTimeUpdated": "1790866260",
+                "version": "1790866200"
+            }
+        ],
+        "facets": {},
+        "rowCount": 168,
+        "message": "content found"
+    }
+}

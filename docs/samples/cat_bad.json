@@ -1,0 +1,8 @@
+{
+    "status": 400,
+    "responseCode": 0,
+    "response": {
+        "error": "bad request: one of your params did not pass validation"
+    },
+    "timestamp": "Sun Oct 04 23:42:28 EDT 2026"
+}

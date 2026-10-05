@@ -1,0 +1,8 @@
+{
+    "status": 404,
+    "responseCode": 1,
+    "response": {
+        "error": "not found: the resource you were acting on could not be found",
+        "message": "No results found"
+    }
+}

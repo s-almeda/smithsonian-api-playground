@@ -1,0 +1,629 @@
+{
+    "status": 200,
+    "responseCode": 1,
+    "response": {
+        "rows": [
+            {
+                "id": "123-1580492962881-1580492968342-0",
+                "title": "Cassiopeia A Supernova Remnant",
+                "unitCode": "OCIO_DPO3D",
+                "type": "edanmdm",
+                "url": "edanmdm:dpo_3d_200012",
+                "content": {
+                    "freetext": {
+                        "notes": [
+                            {
+                                "label": "Summary",
+                                "content": "This result shows Cassiopeia A, called Cas A for short, coming alive through the third dimension of space. Utilizing a technique borrowed from medical imaging, astronomers now have a way to travel through the heart of Cas A using data from NASA's Chandra and Spitzer telescopes. The different colors shown here correspond to different chemical elements present in the debris from the supernova explosion."
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "Smithsonian Astrophysical Observatory"
+                            }
+                        ]
+                    },
+                    "descriptiveNonRepeating": {
+                        "title": {
+                            "label": "Title",
+                            "content": "Cassiopeia A Supernova Remnant"
+                        },
+                        "record_ID": "dpo_3d_200012",
+                        "unit_code": "SAO",
+                        "data_source": "Smithsonian Astrophysical Observatory",
+                        "online_media": {
+                            "media": [
+                                {
+                                    "id": "3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8",
+                                    "type": "3d_voyager",
+                                    "usage": {
+                                        "text": "",
+                                        "codes": "",
+                                        "access": "CC0"
+                                    },
+                                    "content": "https://3d-api.si.edu/voyager/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8",
+                                    "resources": [
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-100k-2048_std.usdz",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (iOS AR model 3D mesh, usdz, scale in m)",
+                                            "category": "iOS AR model",
+                                            "filename": "CASSIOPEIAA-100k-2048_std.usdz",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "usdz",
+                                                    "MODEL_FILE_TYPE": "usdz",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 3190824
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-150k-4096-gltf_std.zip",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Low Resolution 3D mesh, obj, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "CASSIOPEIAA-150k-4096-gltf_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": true
+                                                },
+                                                {
+                                                    "FILE_SIZE": 7243482
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-print_ready.zip",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Watertight 3D mesh, stl, scale in m)",
+                                            "category": "Watertight",
+                                            "filename": "CASSIOPEIAA-print_ready.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "stl",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 44718694
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-150k-4096-obj_std.zip",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Low Resolution 3D mesh, obj, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "CASSIOPEIAA-150k-4096-obj_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 7723943
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-100k-2048_std_draco.glb",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Low Resolution 3D mesh, draco compressed glb, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "CASSIOPEIAA-100k-2048_std_draco.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "draco compressed glb",
+                                                    "MODEL_FILE_TYPE": "draco compressed glb",
+                                                    "DRACO_COMPRESSED": true,
+                                                    "GLTF_STANDARDIZED": true
+                                                },
+                                                {
+                                                    "FILE_SIZE": 2014476
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-150k-4096_std.glb",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Low Resolution 3D mesh, glb, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "CASSIOPEIAA-150k-4096_std.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "glb",
+                                                    "MODEL_FILE_TYPE": "glb",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": true
+                                                },
+                                                {
+                                                    "FILE_SIZE": 9015512
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/resources/CASSIOPEIAA-full_resolution-obj_std.zip",
+                                            "name": "Cassiopeia A Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Cassiopeia A Supernova Remnant (Full Resolution 3D mesh, obj, scale in m)",
+                                            "category": "Full Resolution",
+                                            "filename": "CASSIOPEIAA-full_resolution-obj_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 3566509
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "thumbnail": "https://3d-api.si.edu/content/document/3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8/scene-image-thumb.jpg",
+                                    "voyagerId": "3d_package:732d123d-7a35-411b-a4e1-5e355adcacf8"
+                                }
+                            ],
+                            "mediaCount": 1
+                        },
+                        "metadata_usage": {
+                            "access": "CC0",
+                            "content": "Some additional rights text"
+                        }
+                    }
+                },
+                "hash": "080eeca9bc71b83cc00f673634ce767e1fdd9802",
+                "docSignature": "b96d8a634923a1ea0996b1b0030779ab",
+                "timestamp": "1583233184",
+                "lastTimeUpdated": "1765321860",
+                "version": "1724158116"
+            },
+            {
+                "id": "con-1620124231687-1620138633225-0",
+                "title": "Tycho Supernova Remnant",
+                "unitCode": "OCIO_DPO3D",
+                "type": "edanmdm",
+                "url": "edanmdm:dpo_3d_200122",
+                "content": {
+                    "freetext": {
+                        "notes": [
+                            {
+                                "label": "Description",
+                                "content": "Sky-watchers recorded a stellar explosion in the year 1572 AD, and its remnant is named for the 16th century astronomer Tycho Brahe, who famously described the supernova. Tycho\u2019s Supernova Remnant (SNR) resulted from the explosion of a white dwarf star. The model shows how Tycho's SNR might appear at an age of 1,000 years, after evolving from its current age of 447 years. While some supernovas generate neutron stars and black holes, Tycho\u2019s SNR merely left an empty shell of material."
+                            },
+                            {
+                                "label": "Notes",
+                                "content": "Description Credit: INAF-Osservatorio Astronomico di Palermo/S.Orlando & NASA/CXC/SAO/A.Jubett et al."
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "Smithsonian Institution, Smithsonian Astrophysical Observatory"
+                            }
+                        ]
+                    },
+                    "resources": [],
+                    "descriptiveNonRepeating": {
+                        "title": {
+                            "label": "Title",
+                            "content": "Tycho Supernova Remnant"
+                        },
+                        "record_ID": "dpo_3d_200122",
+                        "unit_code": "SAO",
+                        "data_source": "Smithsonian Astrophysical Observatory",
+                        "online_media": {
+                            "media": [
+                                {
+                                    "id": "3d_package:c0bc58e6-b172-4543-ad58-50261aea523c",
+                                    "type": "3d_voyager",
+                                    "usage": {
+                                        "text": "",
+                                        "codes": "",
+                                        "access": "CC0"
+                                    },
+                                    "content": "https://3d-api.si.edu/voyager/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c",
+                                    "resources": [
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-100k-2048_std_draco.glb",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (Low Resolution 3D mesh, draco compressed glb, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "TYCHO-100k-2048_std_draco.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "draco compressed glb",
+                                                    "MODEL_FILE_TYPE": "draco compressed glb",
+                                                    "DRACO_COMPRESSED": true,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 2567980
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-full_resolution-obj_std.zip",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (Full Resolution 3D mesh, obj, scale in m)",
+                                            "category": "Full Resolution",
+                                            "filename": "TYCHO-full_resolution-obj_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 13577712
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-150k-4096-gltf_std.zip",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (Low Resolution 3D mesh, gltf, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "TYCHO-150k-4096-gltf_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "gltf",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": true
+                                                },
+                                                {
+                                                    "FILE_SIZE": 8766870
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-150k-4096_std.glb",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (Low Resolution 3D mesh, glb, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "TYCHO-150k-4096_std.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "glb",
+                                                    "MODEL_FILE_TYPE": "glb",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 11107176
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-print_ready.zip",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (Watertight 3D mesh, stl, scale in m)",
+                                            "category": "Watertight",
+                                            "filename": "TYCHO-print_ready.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "stl",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 25027679
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-100k-2048_std.usdz",
+                                            "name": "Tycho Supernova Remnant",
+                                            "type": "3D mesh",
+                                            "title": "Tycho Supernova Remnant (iOS AR model 3D mesh, usdz, scale in m)",
+                                            "category": "iOS AR model",
+                                            "filename": "TYCHO-100k-2048_std.usdz",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "usdz",
+                                                    "MODEL_FILE_TYPE": "usdz",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 3541386
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/resources/TYCHO-150k-4096-obj_std.zip",
+                                            "name": "TYCHO-150k-4096-obj_std.zip",
+                                            "type": "3D mesh",
+                                            "title": "TYCHO-150k-4096-obj_std.zip (Low Resolution 3D mesh, obj, scale in default)",
+                                            "category": "Low Resolution",
+                                            "filename": "TYCHO-150k-4096-obj_std.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "default",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 9214208
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "thumbnail": "https://3d-api.si.edu/content/document/3d_package:c0bc58e6-b172-4543-ad58-50261aea523c/scene-image-thumb.jpg",
+                                    "voyagerId": "3d_package:c0bc58e6-b172-4543-ad58-50261aea523c"
+                                }
+                            ],
+                            "mediaCount": 1
+                        },
+                        "metadata_usage": {
+                            "access": "CC0"
+                        }
+                    }
+                },
+                "hash": "1aed5963c760090682ba797afd7b784d17fe9e94",
+                "docSignature": "8c8f314d05e9a5eeb414a81e4ac6bf41",
+                "timestamp": "1620124271",
+                "lastTimeUpdated": "1765321860",
+                "version": "1666833591"
+            },
+            {
+                "id": "123-1580492962881-1580492969392-0",
+                "title": "Fossil whale excavation site MPC 665-667",
+                "unitCode": "OCIO_DPO3D",
+                "type": "edanmdm",
+                "url": "edanmdm:dpo_3d_200018",
+                "content": {
+                    "freetext": {
+                        "name": [
+                            {
+                                "label": "Collector",
+                                "content": "Museo Paleontologico de Caldera, Chile"
+                            }
+                        ],
+                        "notes": [
+                            {
+                                "label": "Summary",
+                                "content": "Cerro Ballena is a unique fossil site near the town of Caldera, in the Atacama Region of northern Chile that preserved several dozen skeletons of fossil whales. After road expansion of the Pan\u00ad-American Highway from 2010-2011, Chilean and US paleontologists documented over 40 skeletons of fossil whales and other marine animals at this site. Interestingly, these fossils derived four separate bone-bearing levels that were layered one on top of each other at the site; these fossil whales(MPC 665-667) were collected on bone-bearing level BL-1. Smithsonian\u2019s Digitization Program Office created the 3D models of fossil whales from Cerro Ballena using a variety of techniques, including laser scanning and photogrammetry.\n \n Fossils from Cerro Ballena are between 7-9 million years old, from a geologic time known as the late Miocene. Excavations by Chilean and Smithsonian scientists revealed a diversity of individual fossil whale skeletons at this site included several different species of whales with adults and juveniles preserved as complete skeletons. The density of fossil whales at Cerro Ballena is the richest known so far in the world. Many of the fossil whale skeletons were intact, including the skull and jaws preserved in articulation with the vertebral column (or backbone), and sometimes along with the bones of the forelimbs (or flippers). Scientists used 3D models of these skeletons to score the degree of anatomical connections among the bones and measure specific aspects of how far the bones in the skeleton have shifted from their life articulation.\n \n Overall, the bones from the fossil whale skeletons at Cerro Ballena showed little sign of disturbance or scavenging by large animals, which suggests that a short time from death to burial. Geological work at Cerro Ballena pointed to the rock layers representing an ancient tidal flat. The fact that skeletons at the site were discovered only meters away from each other also suggests their bodies were concentrated at the site, likely by wave action; many of the skeletons were buried belly up, providing further evidence that the whales were already long dead by the time they arrived at the tidal flat. Together, the evidence point to ancient harmful algal blooms are the likeliest cause for the deaths of all of the animals at the site; also, it is a cause that can repeat through time, and explain the accumulation of whales and other animals at Cerro Ballena across each of the four bone-bearing layers.\n \n Although excavations of the highway expansion are now complete, fossils preserved in rock strata that extend west and east at the roadcut suggest that hundreds of more skeletons remain buried nearby. These scope and density of skeletons from the site make it unique, on par with the La Brea Tar Pits or Dinosaur National Monument in the United States.\n \n Read the scientific paper: https://royalsocietypublishing.org/doi/full/10.1098/rspb.2013.3316\n \n For more images and data from the site, see: https://www.si.edu/newsdesk/photos/cerro-ballena-fossil-whales"
+                            }
+                        ],
+                        "place": [
+                            {
+                                "label": "Site Name",
+                                "content": "Cerro Ballena"
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "NMNH - Paleobiology Dept."
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Field Identifier",
+                                "content": "MPC 665-667"
+                            }
+                        ],
+                        "taxonomicName": [
+                            {
+                                "label": "Taxonony",
+                                "content": "Vertebrata, Mammalia, Eutheria, Cetacea, Mysticeti"
+                            }
+                        ]
+                    },
+                    "indexedStructured": {
+                        "place": [
+                            "Atacama Region, Chile"
+                        ],
+                        "topic": [
+                            "Paleoontology"
+                        ],
+                        "object_type": [
+                            "Fossils"
+                        ]
+                    },
+                    "descriptiveNonRepeating": {
+                        "title": {
+                            "label": "Title",
+                            "content": "Fossil whale excavation site MPC 665-667"
+                        },
+                        "record_ID": "dpo_3d_200018",
+                        "unit_code": "DPO",
+                        "data_source": "NMNH - Paleobiology Dept.",
+                        "online_media": {
+                            "media": [
+                                {
+                                    "id": "3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208",
+                                    "type": "3d_voyager",
+                                    "usage": {
+                                        "text": "",
+                                        "codes": "",
+                                        "access": "CC0"
+                                    },
+                                    "content": "https://3d-api.si.edu/voyager/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208",
+                                    "resources": [
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/la_familia-full_resolution.obj.zip",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (Full resolution 3D mesh, obj, scale in mm)",
+                                            "category": "Full resolution",
+                                            "filename": "la_familia-full_resolution.obj.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "mm",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 683029471
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/la_familia-100k-obj.zip",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (Low resolution 3D mesh, obj, scale in mm)",
+                                            "category": "Low resolution",
+                                            "filename": "la_familia-100k-obj.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "mm",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "obj",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 18962176
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/la_familia-100k-gltf.zip",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (Low resolution 3D mesh, gltf, scale in mm)",
+                                            "category": "Low resolution",
+                                            "filename": "la_familia-100k-gltf.zip",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "mm",
+                                                    "FILE_TYPE": "zip",
+                                                    "MODEL_FILE_TYPE": "gltf",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 18412796
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/la_familia-100k-web.glb",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (Low resolution 3D mesh, glb, scale in mm)",
+                                            "category": "Low resolution",
+                                            "filename": "la_familia-100k-web.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "mm",
+                                                    "FILE_TYPE": "glb",
+                                                    "MODEL_FILE_TYPE": "glb",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 25504652
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/p0-Part-100k-2048-medium-100k-2048_std_draco.glb",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (Low Resolution 3D mesh, glb, scale in m)",
+                                            "category": "Low Resolution",
+                                            "filename": "p0-Part-100k-2048-medium-100k-2048_std_draco.glb",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "glb",
+                                                    "MODEL_FILE_TYPE": "glb",
+                                                    "DRACO_COMPRESSED": true,
+                                                    "GLTF_STANDARDIZED": true
+                                                },
+                                                {
+                                                    "FILE_SIZE": 2537100
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "url": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/resources/p0-Part-100k-2048-medium-100k-2048_std.usdz",
+                                            "name": "Fossil whale excavation site MPC 675",
+                                            "type": "3D mesh",
+                                            "title": "Fossil whale excavation site MPC 675 (iOS AR model 3D mesh, usdz, scale in m)",
+                                            "category": "iOS AR model",
+                                            "filename": "p0-Part-100k-2048-medium-100k-2048_std.usdz",
+                                            "attributes": [
+                                                {
+                                                    "UNITS": "m",
+                                                    "FILE_TYPE": "usdz",
+                                                    "MODEL_FILE_TYPE": "usdz",
+                                                    "DRACO_COMPRESSED": false,
+                                                    "GLTF_STANDARDIZED": false
+                                                },
+                                                {
+                                                    "FILE_SIZE": 5522279
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "thumbnail": "https://3d-api.si.edu/content/document/3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208/scene-image-thumb.jpg",
+                                    "voyagerId": "3d_package:a6bd4b88-3193-4455-b914-e926d6a9c208"
+                                }
+                            ],
+                            "mediaCount": 1
+                        },
+                        "metadata_usage": {
+                            "access": "CC0"
+                        }
+                    }
+                },
+                "hash": "1e391330398ac775b5e2cc372b91b3c5e9fde03d",
+                "docSignature": "f72ac70e7b5341bcfaef3e11ba8c4ce5",
+                "timestamp": "1583233184",
+                "lastTimeUpdated": "1765321860",
+                "version": "1666833591"
+            }
+        ],
+        "facets": {},
+        "rowCount": 1937,
+        "message": "content found"
+    }
+}

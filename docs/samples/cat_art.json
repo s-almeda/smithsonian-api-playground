@@ -1,0 +1,433 @@
+{
+    "status": 200,
+    "responseCode": 1,
+    "response": {
+        "rows": [
+            {
+                "id": "ld1-1643399756728-1643399809087-0",
+                "title": "Jerome Myers Self-Portrait",
+                "unitCode": "NPG",
+                "type": "edanmdm",
+                "url": "edanmdm:npg_S_NPG.2002.305",
+                "content": {
+                    "freetext": {
+                        "date": [
+                            {
+                                "label": "Date",
+                                "content": "1929"
+                            }
+                        ],
+                        "name": [
+                            {
+                                "label": "Artist",
+                                "content": "Jerome Myers, 1867 - 1940"
+                            },
+                            {
+                                "label": "Sitter",
+                                "content": "Jerome Myers, 1867 - 1940"
+                            }
+                        ],
+                        "topic": [
+                            {
+                                "label": "Topic",
+                                "content": "Self-portrait"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Jerome Myers: Arts and Culture\\Visual Arts\\Artist"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Jerome Myers: Male"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Portrait"
+                            }
+                        ],
+                        "setName": [
+                            {
+                                "label": "See more items in",
+                                "content": "National Portrait Gallery Collection"
+                            },
+                            {
+                                "label": "Location",
+                                "content": "Currently not on view"
+                            }
+                        ],
+                        "creditLine": [
+                            {
+                                "label": "Credit Line",
+                                "content": "National Portrait Gallery, Smithsonian Institution; the Ruth Bowman and Harry Kahn Twentieth-Century American Self-Portrait Collection"
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "National Portrait Gallery"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Object number",
+                                "content": "S/NPG.2002.305"
+                            }
+                        ],
+                        "objectType": [
+                            {
+                                "label": "Type",
+                                "content": "Drawing"
+                            }
+                        ],
+                        "objectRights": [
+                            {
+                                "label": "Restrictions & Rights",
+                                "content": "CC0"
+                            }
+                        ],
+                        "physicalDescription": [
+                            {
+                                "label": "Medium",
+                                "content": "Charcoal on paper"
+                            },
+                            {
+                                "label": "Dimensions",
+                                "content": "Sheet: 40.8 x 30.4cm (16 1/16 x 11 15/16\")"
+                            },
+                            {
+                                "label": "Dimensions",
+                                "content": "Frame: 116.8 x 47 x 2.5cm (46 x 18 1/2 x 1\")"
+                            }
+                        ]
+                    },
+                    "indexedStructured": {
+                        "date": [
+                            "1920s"
+                        ],
+                        "name": [
+                            "Myers, Jerome"
+                        ],
+                        "topic": [
+                            "Art",
+                            "Arts and Culture",
+                            "Self-portraits",
+                            "Men",
+                            "Portraits",
+                            "Artists"
+                        ],
+                        "object_type": [
+                            "Drawings"
+                        ],
+                        "online_media_type": [
+                            "Images"
+                        ]
+                    },
+                    "descriptiveNonRepeating": {
+                        "guid": "http://n2t.net/ark:/65665/sm4d15afdc2-6f4e-4ab3-9d18-cca4cb21d893",
+                        "title": {
+                            "label": "Title",
+                            "content": "Jerome Myers Self-Portrait"
+                        },
+                        "record_ID": "npg_S_NPG.2002.305",
+                        "unit_code": "NPG",
+                        "title_sort": "JEROME MYERS SELF-PORTRAIT",
+                        "data_source": "National Portrait Gallery",
+                        "record_link": "https://npg.si.edu/object/npg_S_NPG.2002.305",
+                        "metadata_usage": {
+                            "access": "CC0"
+                        }
+                    }
+                },
+                "hash": "c9740083052e6c2816e8c106e879590434afb998",
+                "docSignature": "c14f4ca9d1d4f062c70a412823a8ad64",
+                "timestamp": "1663784034",
+                "lastTimeUpdated": "1742381924",
+                "version": "1742379544"
+            },
+            {
+                "id": "ld1-1690447419482-1690447473796-1",
+                "title": "Face-to-Face: Cindy Sherman portrait",
+                "unitCode": "NPG",
+                "type": "edanmdm",
+                "url": "edanmdm:npg_AV.2009.EDU.6",
+                "content": {
+                    "freetext": {
+                        "date": [
+                            {
+                                "label": "Date",
+                                "content": "January 8, 2009"
+                            }
+                        ],
+                        "name": [
+                            {
+                                "label": "Producer",
+                                "content": "National Portrait Gallery, Smithsonian Institution"
+                            },
+                            {
+                                "label": "Associated Person",
+                                "content": "Cindy Sherman, born 19 Jan 1954"
+                            },
+                            {
+                                "label": "Associated Person",
+                                "content": "Martin Schoeller, born 12 Mar 1968"
+                            }
+                        ],
+                        "notes": [
+                            {
+                                "label": "Description",
+                                "content": "As part of the National Portrait Gallery's education program \"Face-to-Face,\u201d NPG curator Anne Goodyear discusses a portrait of Cindy Sherman by photographer Martin Schoeller. Anne Goodyear, who is assistant curator of prints and drawings at NPG, discussed this portrait of Cindy Sherman by photographer Martin Schoeller. The portrait is on display in the recently opened exhibition \"Portraiture Now: Feature Photography.\" Cindy Sherman, who is well known for creating photographs of herself adopting a broad range of persona, has a face that is surprisingly unfamiliar to viewers. Schoeller's portrait of Sherman, originally published with a New Yorker profile by Calvin Tomkins, \"Her Secret Identities,\" unmasks the influential artist. View the online exhibition at: http://www.npg.si.edu/exhibit/feature. Recorded at NPG, January 8, 2009. Image info: Cindy Sherman / Martin Schoeller, 2000 / Digital C-print / Collection of the artist, courtesy Hasted Hunt, New York City / Copyright Martin Schoeller. Face-to-Face talk currently located on the National Portrait Gallery's iTunesU page. [\u201cCindy Sherman\u201d by Martin Schoeller. EXH.FP.60]"
+                            },
+                            {
+                                "label": "Portfolio/Series",
+                                "content": "Face-to-Face"
+                            }
+                        ],
+                        "topic": [
+                            {
+                                "label": "Topic",
+                                "content": "Portrait"
+                            }
+                        ],
+                        "setName": [
+                            {
+                                "label": "See more items in",
+                                "content": "National Portrait Gallery Collection"
+                            },
+                            {
+                                "label": "Location",
+                                "content": "Currently not on view"
+                            }
+                        ],
+                        "creditLine": [
+                            {
+                                "label": "Credit Line",
+                                "content": "National Portrait Gallery, Smithsonian Institution: Audio/Visual Special Collection"
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "National Portrait Gallery"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Object number",
+                                "content": "AV.2009.EDU.6"
+                            }
+                        ],
+                        "objectType": [
+                            {
+                                "label": "Type",
+                                "content": "Time-Based Media"
+                            }
+                        ],
+                        "objectRights": [
+                            {
+                                "label": "Restrictions & Rights",
+                                "content": "CC0"
+                            }
+                        ],
+                        "physicalDescription": [
+                            {
+                                "label": "Medium",
+                                "content": "Audio recording"
+                            },
+                            {
+                                "label": "Dimensions",
+                                "content": "Duration: 25 min., 08 sec."
+                            }
+                        ]
+                    },
+                    "indexedStructured": {
+                        "date": [
+                            "2000s"
+                        ],
+                        "name": [
+                            "Sherman, Cindy",
+                            "National Portrait Gallery, Smithsonian Institution",
+                            "Schoeller, Martin"
+                        ],
+                        "topic": [
+                            "Portraits"
+                        ],
+                        "object_type": [
+                            "Time-Based Media"
+                        ]
+                    },
+                    "descriptiveNonRepeating": {
+                        "guid": "http://n2t.net/ark:/65665/sm4e6125ad3-2ce6-4517-9f19-286bed098056",
+                        "title": {
+                            "label": "Title",
+                            "content": "Face-to-Face: Cindy Sherman portrait"
+                        },
+                        "record_ID": "npg_AV.2009.EDU.6",
+                        "unit_code": "NPG",
+                        "title_sort": "FACE-TO-FACE: CINDY SHERMAN PORTRAIT",
+                        "data_source": "National Portrait Gallery",
+                        "record_link": "https://npg.si.edu/object/npg_AV.2009.EDU.6",
+                        "metadata_usage": {
+                            "access": "CC0"
+                        }
+                    }
+                },
+                "hash": "4cb4a25c89e85815cadb23b37d4204f5c1de4909",
+                "docSignature": "dfc02ef98b476928460464a5f969e91e",
+                "timestamp": "1690452644",
+                "lastTimeUpdated": "1778322956",
+                "version": "1778320096"
+            },
+            {
+                "id": "ld1-1643399756728-1643399790624-0",
+                "title": "Clark Mills Self-Portrait",
+                "unitCode": "NPG",
+                "type": "edanmdm",
+                "url": "edanmdm:npg_NPG.70.30",
+                "content": {
+                    "freetext": {
+                        "date": [
+                            {
+                                "label": "Date",
+                                "content": "c. 1840-50"
+                            }
+                        ],
+                        "name": [
+                            {
+                                "label": "Artist",
+                                "content": "Clark Mills, 13 Dec 1810 - 12 Jan 1883"
+                            },
+                            {
+                                "label": "Sitter",
+                                "content": "Clark Mills, 13 Dec 1810 - 12 Jan 1883"
+                            }
+                        ],
+                        "notes": [
+                            {
+                                "label": "Provenance",
+                                "content": "National Institute; gift to National Collection of Fine Arts (now Smithsonian American Art Museum) 1962; transferred to NPG 1970"
+                            }
+                        ],
+                        "topic": [
+                            {
+                                "label": "Topic",
+                                "content": "Self-portrait"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Mask\\Life mask"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Clark Mills: Male"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Clark Mills: Arts and Culture\\Visual Arts\\Artist\\Sculptor"
+                            },
+                            {
+                                "label": "Topic",
+                                "content": "Portrait"
+                            }
+                        ],
+                        "setName": [
+                            {
+                                "label": "See more items in",
+                                "content": "National Portrait Gallery Collection"
+                            },
+                            {
+                                "label": "Location",
+                                "content": "Currently not on view"
+                            }
+                        ],
+                        "creditLine": [
+                            {
+                                "label": "Credit Line",
+                                "content": "National Portrait Gallery, Smithsonian Institution; transfer from the Smithsonian American Art Museum; gift of the National Institute, 1862"
+                            }
+                        ],
+                        "dataSource": [
+                            {
+                                "label": "Data Source",
+                                "content": "National Portrait Gallery"
+                            }
+                        ],
+                        "identifier": [
+                            {
+                                "label": "Object number",
+                                "content": "NPG.70.30"
+                            }
+                        ],
+                        "objectType": [
+                            {
+                                "label": "Type",
+                                "content": "Sculpture"
+                            }
+                        ],
+                        "objectRights": [
+                            {
+                                "label": "Restrictions & Rights",
+                                "content": "CC0"
+                            }
+                        ],
+                        "physicalDescription": [
+                            {
+                                "label": "Medium",
+                                "content": "Plaster"
+                            },
+                            {
+                                "label": "Dimensions",
+                                "content": "55.9cm (22\"), Accurate"
+                            }
+                        ]
+                    },
+                    "indexedStructured": {
+                        "date": [
+                            "1830s",
+                            "1850s"
+                        ],
+                        "name": [
+                            "Mills, Clark"
+                        ],
+                        "topic": [
+                            "Art",
+                            "Arts and Culture",
+                            "Self-portraits",
+                            "Life mask",
+                            "Men",
+                            "Portraits",
+                            "Sculptors",
+                            "Masks",
+                            "Artists"
+                        ],
+                        "object_type": [
+                            "Sculpture"
+                        ]
+                    },
+                    "descriptiveNonRepeating": {
+                        "guid": "http://n2t.net/ark:/65665/sm4a6332c8e-fe9d-4ed9-8587-a29a1b78834d",
+                        "title": {
+                            "label": "Title",
+                            "content": "Clark Mills Self-Portrait"
+                        },
+                        "record_ID": "npg_NPG.70.30",
+                        "unit_code": "NPG",
+                        "title_sort": "CLARK MILLS SELF-PORTRAIT",
+                        "data_source": "National Portrait Gallery",
+                        "record_link": "https://npg.si.edu/object/npg_NPG.70.30",
+                        "metadata_usage": {
+                            "access": "CC0"
+                        }
+                    }
+                },
+                "hash": "4a0d802d3d4e08de75e40fa6c7bdd1576da7414f",
+                "docSignature": "ff21e112f8265e94fb1d806a4e0f561e",
+                "timestamp": "1663786472",
+                "lastTimeUpdated": "1742381924",
+                "version": "1742379544"
+            }
+        ],
+        "facets": {},
+        "rowCount": 19777,
+        "message": "content found"
+    }
+}

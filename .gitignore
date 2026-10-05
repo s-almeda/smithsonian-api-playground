@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# deps / build
+node_modules/
+dist/
+
+# os / editor
+.DS_Store
+
+# logs
+*.log
+
+# licensed fonts (do not publish)
+public/fonts/
