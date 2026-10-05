@@ -114,7 +114,7 @@ export default function App() {
     <LangContext.Provider value={lang}>
       <div className="min-h-screen bg-si-paper text-si-ink">
       <header className="bg-si-ink text-si-paper">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-3 px-4 pt-9 pb-3">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 pt-9 pb-3 md:flex-row md:items-end md:justify-between">
           <div>
               <h1 className="font-serif text-[2rem] leading-none">
               <img src="favicon.png" alt="silly little sun" className="mr-1 inline-block h-[0.85em] w-auto align-baseline" />
@@ -127,8 +127,8 @@ export default function App() {
             <p className="font-hand text-slate-400 tracking-[0.12em]">API playground prototype by shm :3</p>
           </div>
           <div className="relative text-right text-xs text-slate-400">
-            {/* absolute so it floats above the field without making the header taller */}
-            <p className="absolute bottom-full left-0 mb-1 font-hand text-base text-slate-300">enter your API key here</p>
+            {/* desktop: floats above the field without making the header taller; mobile: normal flow so it can't overlap the logo */}
+            <p className="mb-1 text-left font-hand text-base text-slate-300 md:absolute md:bottom-full md:left-0">enter your API key here</p>
             <input
               type="password"
               className="w-full border border-si-slate bg-si-slate px-2 py-1 text-sm text-si-paper placeholder:text-si-gray disabled:cursor-not-allowed disabled:opacity-60"
