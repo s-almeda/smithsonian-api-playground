@@ -1,5 +1,5 @@
 import { createContext, Fragment, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
-import { Clipboard, PanelRightClose, PanelRightOpen } from 'lucide-react'
+import { ChevronDown, ChevronUp, Clipboard, PanelRightClose, PanelRightOpen } from 'lucide-react'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -27,16 +27,18 @@ export function Panel({ top, left, center, right }: { top?: ReactNode; left: Rea
       <div className={`grid md:h-[75vh] transition-[grid-template-columns] duration-300 ease-in-out ${rawOpen ? 'md:grid-cols-[17rem_minmax(0,1fr)_21.75rem]' : 'md:grid-cols-[17rem_minmax(0,1fr)_1.75rem]'}`}>
         <div className="space-y-2 overflow-auto bg-si-mist p-3">{left}</div>
         <div className="space-y-2 overflow-auto bg-si-paper p-3">{center}</div>
-        <div className="flex min-h-0 bg-si-ink text-si-paper">
-          {/* tab along the left edge: toggles the raw response */}
+        <div className="flex min-h-0 flex-col bg-si-ink text-si-paper md:flex-row">
+          {/* toggle: a bar on top on mobile, a tab along the left edge on desktop */}
           <button
             onClick={() => setRawOpen(!rawOpen)}
             title={rawOpen ? 'hide raw JSON' : 'show raw JSON'}
-            className="px-5 flex w-7 shrink-0 cursor-pointer items-center gap-2 bg-si-slate py-3 text-si-line [writing-mode:vertical-rl] hover:bg-si-gray hover:text-white"
+            className="flex shrink-0 cursor-pointer items-center gap-2 bg-si-slate px-3 py-2 text-si-line hover:bg-si-gray hover:text-white md:w-7 md:px-5 md:py-3 md:[writing-mode:vertical-rl]"
           >
-            {rawOpen ? <PanelRightClose size={14} /> : <PanelRightOpen size={14} />} raw JSON response
+            <span className="hidden md:block">{rawOpen ? <PanelRightClose size={14} /> : <PanelRightOpen size={14} />}</span>
+            <span className="md:hidden">{rawOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}</span>
+            raw JSON response
           </button>
-          <div className={`min-w-0 flex-1 space-y-2 overflow-auto p-3 transition-opacity duration-200 ${rawOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`} aria-hidden={!rawOpen}>
+          <div className={`max-h-[60vh] min-w-0 flex-1 space-y-2 overflow-auto p-3 transition-opacity duration-200 md:max-h-none ${rawOpen ? 'opacity-100' : 'pointer-events-none hidden opacity-0 md:block'}`} aria-hidden={!rawOpen}>
             {right}
           </div>
         </div>
