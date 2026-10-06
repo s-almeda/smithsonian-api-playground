@@ -1,11 +1,11 @@
 import { createContext, Fragment, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
-import { ChevronDown, ChevronUp, Clipboard, PanelRightClose, PanelRightOpen } from 'lucide-react'
+import { Check, ChevronDown, ChevronUp, Clipboard, PanelRightClose, PanelRightOpen } from 'lucide-react'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
 import python from 'highlight.js/lib/languages/python'
 import 'highlight.js/styles/github-dark.css' // token colors for the code snippets
-import { SIGNUP_URL, cleanTitle, fieldsOf, withheldMedia, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
+import { SIGNUP_URL, cleanTitle, fieldsOf, shareUrl, snapshotResult, withheldMedia, imageOf, snippet, type ApiRequest, type ApiResult, type EdanRecord, type Lang } from './api'
 
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('javascript', javascript)
@@ -16,6 +16,8 @@ export type Run = (req: ApiRequest) => Promise<ApiResult>
 const input = 'w-full border border-si-line bg-white px-1.5 py-0.5'
 
 export const LangContext = createContext<[Lang, (l: Lang) => void]>(['curl', () => {}])
+/** key the user typed into the header field ('' for invite links / .env) — shown in code snippets */
+export const UserKeyContext = createContext('')
 
 // ─── Shared layout: [form + live code | results | raw response] ─────────────
 
@@ -24,7 +26,7 @@ export function Panel({ top, left, center, right }: { top?: ReactNode; left: Rea
   return (
     <section className="border border-si-line text-xs">
       {top}
-      <div className={`grid md:h-[75vh] transition-[grid-template-columns] duration-300 ease-in-out ${rawOpen ? 'md:grid-cols-[17rem_minmax(0,1fr)_21.75rem]' : 'md:grid-cols-[17rem_minmax(0,1fr)_1.75rem]'}`}>
+      <div className={`grid grid-cols-[minmax(0,1fr)] md:h-[75vh] transition-[grid-template-columns] duration-300 ease-in-out ${rawOpen ? 'md:grid-cols-[17rem_minmax(0,1fr)_21.75rem]' : 'md:grid-cols-[17rem_minmax(0,1fr)_1.75rem]'}`}>
         <div className="space-y-2 overflow-auto bg-si-mist p-3">{left}</div>
         <div className="space-y-2 overflow-auto bg-si-paper p-3">{center}</div>
         <div className="flex min-h-0 flex-col bg-si-ink text-si-paper md:flex-row">
@@ -128,11 +130,13 @@ function DocNote({ name }: { name: string }) {
   )
 }
 
-function Field({ label, children }: { label: string; children: ReactNode }) {
+function Field({ label, hint, below, children }: { label: string; hint?: ReactNode; below?: ReactNode; children: ReactNode }) {
   return (
-    <label className="grid grid-cols-[4.5rem_1fr] items-center gap-2">
+    <label className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-2 gap-y-0.5">
       <span className="text-si-gray">{label}</span>
       {children}
+      {below && <div className="col-start-2 space-y-1">{below}</div>}
+      {hint && <span className="col-start-2 text-[11px] text-si-gray">{hint}</span>}
     </label>
   )
 }
@@ -145,7 +149,7 @@ const LANGS: [Lang, string][] = [
 
 function CodeBox({ req }: { req: ApiRequest }) {
   const [lang, setLang] = useContext(LangContext)
-  const code = snippet(lang, req)
+  const code = snippet(lang, req, useContext(UserKeyContext))
   // sliding highlight: measure the selected button, move a blue pill behind it
   const buttons = useRef<Record<string, HTMLButtonElement | null>>({})
   const [pill, setPill] = useState({ left: 0, width: 0 })
@@ -189,25 +193,26 @@ function CodeBox({ req }: { req: ApiRequest }) {
 
 function Raw({ result, loading }: { result: ApiResult | null; loading?: boolean }) {
   const body = result ? (result.json === undefined ? result.text : JSON.stringify(result.json, null, 2)) : ''
+  if (result?.shared) return <p>Someone shared this record with you via link, and not by calling the open access API.</p>
   return (
     <>
       <div className="flex gap-2">
         <span className={result?.error ? 'text-red-400' : 'text-si-gray'}>{loading ? 'loading…' : result && `${result.status} · ${result.ms} ms`}</span>
         <Copy text={body} />
       </div>
-      <pre className="overflow-auto font-mono text-[11px] text-si-mist">{body.length > 200_000 ? body.slice(0, 200_000) + '\n… (truncated, copy for full)' : body}</pre>
+      <pre className="font-mono text-[11px] whitespace-pre-wrap text-si-mist wrap-anywhere">{body.length > 200_000 ? body.slice(0, 200_000) + '\n… (truncated, copy for full)' : body}</pre>
     </>
   )
 }
 
-function Copy({ text, className = 'ml-auto' }: { text: string; className?: string }) {
+function Copy({ text, label, className = 'ml-auto' }: { text: string; label?: string; className?: string }) {
   // toast is `fixed` at the button's screen position so scroll containers can't clip it; key replays the animation
   const [toast, setToast] = useState<{ x: number; y: number; key: number } | null>(null)
   if (!text) return null
   return (
     <button
       title="copy"
-      className={`${className} cursor-pointer rounded-full bg-si-blue p-1 text-white hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink`}
+      className={`${className} inline-flex cursor-pointer items-center gap-1 bg-si-blue text-white ${label ? 'rounded-sm px-1.5 py-0.5' : 'rounded-full p-1'} hover:bg-si-gold hover:text-si-ink active:bg-shm-green active:text-si-ink`}
       onClick={(e) => {
         navigator.clipboard.writeText(text)
         const b = e.currentTarget.getBoundingClientRect()
@@ -215,6 +220,7 @@ function Copy({ text, className = 'ml-auto' }: { text: string; className?: strin
       }}
     >
       <Clipboard size={14} />
+      {label}
       {toast && (
         <span
           key={toast.key}
@@ -317,6 +323,66 @@ function searchRequest({ form, page }: SearchQuery): ApiRequest {
   }
 }
 
+// fqs tag pills: starters + every filter you've searched with (remembered in this browser)
+const RECENT_FQS_KEY = 'si-playground:recent-fqs'
+const STARTER_FQS = ['media_usage:CC0', 'online_media_type:Images', 'online_media_type:"3D Models"']
+
+function parseFqs(fqs: string): string[] | null {
+  if (!fqs.trim()) return []
+  try {
+    const a = JSON.parse(fqs)
+    return Array.isArray(a) ? a.map(String) : null
+  } catch {
+    return null
+  }
+}
+
+function readRecentFqs(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem(RECENT_FQS_KEY) ?? '[]')
+  } catch {
+    return []
+  }
+}
+
+/** "unit_code:NMNHFISHES" → "NMNHFISHES", 'online_media_type:"3D Models"' → "3D Models" */
+function fqLabel(fq: string): string {
+  if (fq === 'media_usage:CC0') return 'CC0'
+  return fq.match(/^\w+:"?([^"]*)"?$/)?.[1] || fq
+}
+
+// order: CC0 first, then newest-first (typed-but-not-searched yet, then searched), then the other starters
+function FqTags({ fqs, recent, onChange }: { fqs: string; recent: string[]; onChange: (fqs: string) => void }) {
+  const current = parseFqs(fqs)
+  const [typed, setTyped] = useState<string[]>([])
+  // new filters typed into the box show up at the front (toggling existing tags doesn't reorder them)
+  useEffect(() => {
+    const fresh = current?.filter((fq) => !typed.includes(fq) && !recent.includes(fq) && !STARTER_FQS.includes(fq))
+    if (fresh?.length) setTyped((s) => [...fresh, ...s])
+  }, [fqs]) // eslint-disable-line react-hooks/exhaustive-deps
+  const tags = [...new Set(['media_usage:CC0', ...typed, ...recent, ...STARTER_FQS])]
+  return (
+    <div className="flex max-h-[2.6rem] flex-wrap gap-1 overflow-y-auto">
+      {tags.map((fq) => {
+        const on = !!current?.includes(fq)
+        return (
+          <button
+            key={fq}
+            type="button"
+            title={fq}
+            disabled={!current}
+            onClick={() => current && onChange(JSON.stringify(on ? current.filter((x) => x !== fq) : [...current, fq]))}
+            className={`inline-flex cursor-pointer items-center gap-0.5 rounded-sm border-2 px-1 leading-tight hover:bg-si-gray hover:text-white disabled:cursor-not-allowed disabled:opacity-40 ${on ? 'border-[#669420] bg-shm-green text-si-ink' : 'border-transparent bg-si-line text-si-slate'}`}
+          >
+            {on && <Check size={11} strokeWidth={3} />}
+            {fqLabel(fq)}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
 export function SearchTab(props: {
   top: ReactNode
   form: SearchForm
@@ -328,6 +394,19 @@ export function SearchTab(props: {
 }) {
   const { top, form, setForm, query, setQuery, run, onOpen } = props
   const { result, loading, response } = useResult(query, () => query && searchRequest(query), run)
+  // filters of every search that runs (incl. from terms/stats clicks) move to the front of the recent list
+  const [recentFqs, setRecentFqs] = useState(readRecentFqs)
+  useEffect(() => {
+    const used = query && parseFqs(query.form.fqs)
+    if (!used?.length) return
+    const next = [...new Set([...used, ...readRecentFqs()])].slice(0, 40)
+    setRecentFqs(next)
+    try {
+      localStorage.setItem(RECENT_FQS_KEY, JSON.stringify(next))
+    } catch {
+      /* storage unavailable */
+    }
+  }, [query])
   const rows: EdanRecord[] = (query && response?.rows) || []
   const lastPage = query ? Math.max(1, Math.ceil((response?.rowCount ?? 0) / (Number(query.form.rows) || 10))) : 1
   const set = (k: keyof SearchForm) => (e: { target: { value: string } }) => setForm({ ...form, [k]: e.target.value })
@@ -348,7 +427,7 @@ export function SearchTab(props: {
               setQuery({ form, page: 1 })
             }}
           >
-            <Field label="q">
+            <Field label="q" hint={<>enter a search query here! for example "dogs"</>}>
               <input className={input} value={form.q} onChange={set('q')} placeholder="ex: dogs (empty = *)" />
             </Field>
             <Field label="category">
@@ -379,7 +458,20 @@ export function SearchTab(props: {
             <Field label="rows">
               <input className={input} type="number" min={1} max={1000} value={form.rows} onChange={set('rows')} />
             </Field>
-            <Field label="fqs">
+            <Field
+              label="fqs"
+              hint={
+                <>
+                  filters: a JSON list of <code>field:value</code> pairs, e.g. <code>["unit_code:NMNHFISHES"]</code>. tap a tag to add/remove it
+                </>
+              }
+              below={
+                <>
+                  <p className="text-[10px] text-si-gray italic">frequently used filters</p>
+                  <FqTags fqs={form.fqs} recent={recentFqs} onChange={(fqs) => setForm({ ...form, fqs })} />
+                </>
+              }
+            >
               <textarea className={`${input} font-mono`} rows={2} value={form.fqs} onChange={set('fqs')} placeholder='["unit_code:NASM"]' />
             </Field>
             {err && <p className="text-red-700">{err}</p>}
@@ -449,15 +541,21 @@ function Pages({ page, last, onPage }: { page: number; last: number; onPage: (p:
 
 // ─── Item ────────────────────────────────────────────────────────────────────
 
-export type ItemQuery = { id: string; n: number }
+export type ItemQuery = { id: string; n: number; snapshot?: string } // snapshot = packed record from a share link
 
 const EXAMPLE_ID = 'edanmdm:chndm_1949-17-1'
 
 
 export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: string) => void; query: ItemQuery | null; setQuery: (q: ItemQuery) => void; run: Run }) {
   const { top, input: value, setInput, query, setQuery, run } = props
-  const { result, loading, response } = useResult(query, () => query && { path: `/content/${query.id}`, params: {} }, run)
+  const fetchItem: Run = (req) => (query?.snapshot ? snapshotResult(query.snapshot, req) : run(req))
+  const { result, loading, response } = useResult(query, () => query && { path: `/content/${query.id}`, params: {} }, fetchItem)
   const r = response?.id ? (response as EdanRecord) : null
+  const [share, setShare] = useState('')
+  useEffect(() => {
+    setShare('')
+    if (r) shareUrl(r).then(setShare)
+  }, [r?.url]) // eslint-disable-line react-hooks/exhaustive-deps
   const src = r && imageOf(r, 800)
   // 3D models link to Smithsonian's Voyager viewer, which can be embedded
   const model3d = r?.content.descriptiveNonRepeating?.online_media?.media?.find((m) => m.type === '3d_voyager')?.content
@@ -501,7 +599,14 @@ export function ItemTab(props: { top: ReactNode; input: string; setInput: (s: st
                     </a>
                   </>
                 )}
+                {result?.shared && ' · shared snapshot'}
               </p>
+              {share && (
+                <p className="flex flex-wrap items-center gap-2">
+                  <Copy text={share} label="copy share link" className="" />
+                  <span className="text-[11px] text-si-gray">(you can use this to share this record with anyone, even if they don't have an API key.)</span>
+                </p>
+              )}
               {model3d ? (
                 <iframe src={model3d} title="3D model" allowFullScreen className="aspect-video w-full bg-si-ink" />
               ) : (

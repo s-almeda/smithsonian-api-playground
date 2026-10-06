@@ -16,6 +16,7 @@ export interface ApiResult {
   json: unknown // undefined when the body isn't JSON
   error?: string
   keyError?: boolean // api.data.gov rejected the key (API_KEY_MISSING / API_KEY_INVALID / ...)
+  shared?: boolean // came from a share link's snapshot, not from the API
 }
 
 export function buildUrl(req: ApiRequest, apiKey: string): string {
@@ -57,25 +58,35 @@ export async function callApi(req: ApiRequest, apiKey: string, invite = ''): Pro
 
 export type Lang = 'curl' | 'js' | 'python'
 
-export function snippet(lang: Lang, req: ApiRequest): string {
+const KEY_WARNING = 'This is your actual personal API key! you should not share it (or, by extension, this block of code) widely'
+
+/** `apiKey` = the key the user typed into the header; when set it's written into the code (with a warning comment). */
+export function snippet(lang: Lang, req: ApiRequest, apiKey = ''): string {
   const base = API_BASE + req.path
-  const params = [...Object.entries(req.params).filter(([, v]) => v), ['api_key', 'YOUR_API_KEY']]
+  const params = Object.entries(req.params).filter(([, v]) => v)
+  const key = apiKey || 'YOUR_API_KEY'
   if (lang === 'curl') {
-    return [`curl -G '${base}'`, ...params.map(([k, v]) => `  --data-urlencode '${k}=${v.replace(/'/g, `'\\''`)}'`)].join(' \\\n')
+    // bash can't have a comment between continued lines, so the warning goes above the command
+    const lines = [`curl -G '${base}'`, ...[...params, ['api_key', key]].map(([k, v]) => `  --data-urlencode '${k}=${v.replace(/'/g, `'\\''`)}'`)]
+    return (apiKey ? `# ${KEY_WARNING}\n` : '') + lines.join(' \\\n')
   }
   if (lang === 'js') {
     return `const params = new URLSearchParams({
 ${params.map(([k, v]) => `  ${k}: ${JSON.stringify(v)},`).join('\n')}
+${apiKey ? `  // ${KEY_WARNING}\n` : ''}  api_key: ${JSON.stringify(key)},
 });
 const res = await fetch("${base}?" + params);
-const data = await res.json();`
+const data = await res.json();
+console.log(data);`
   }
   return `import requests
 
 params = {
 ${params.map(([k, v]) => `    "${k}": ${JSON.stringify(v)},`).join('\n')}
+${apiKey ? `    # ${KEY_WARNING}\n` : ''}    "api_key": ${JSON.stringify(key)},
 }
-data = requests.get("${base}", params=params).json()`
+data = requests.get("${base}", params=params).json()
+print(data)`
 }
 
 // ─── Records (see docs/smithsonian-api.md → "Record") ────────────────────────
@@ -118,6 +129,55 @@ export function imageOf(r: EdanRecord, size: number): string | undefined {
   const img = media.find((m) => m.type === 'Images' && m.content)
   if (img?.content) return img.content.includes('/deliveryService/id/') ? `${img.content}/${size}` : img.content
   return media.find((m) => m.thumbnail)?.thumbnail
+}
+
+// ─── Share links: a trimmed copy of the record, compressed into the URL hash, so opening it needs no API call/key ───
+//   ?id=edanmdm:...#s=<deflate-raw + base64url>   (the hash never reaches any server)
+
+function trimRecord(r: EdanRecord): EdanRecord {
+  const d = r.content.descriptiveNonRepeating
+  return {
+    id: r.id,
+    url: r.url,
+    title: r.title,
+    unitCode: r.unitCode,
+    type: r.type,
+    content: {
+      descriptiveNonRepeating: d && {
+        data_source: d.data_source,
+        record_link: d.record_link,
+        online_media: d.online_media && { media: d.online_media.media?.map(({ type, content, thumbnail }) => ({ type, content, thumbnail })) },
+      },
+      indexedStructured: r.content.indexedStructured?.online_media_type && { online_media_type: r.content.indexedStructured.online_media_type },
+      freetext: r.content.freetext,
+    },
+  }
+}
+
+async function pack(text: string): Promise<string> {
+  const bytes = new Uint8Array(await new Response(new Blob([text]).stream().pipeThrough(new CompressionStream('deflate-raw'))).arrayBuffer())
+  let binary = ''
+  for (const b of bytes) binary += String.fromCharCode(b)
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+}
+
+async function unpack(packed: string): Promise<string> {
+  const bytes = Uint8Array.from(atob(packed.replace(/-/g, '+').replace(/_/g, '/')), (c) => c.charCodeAt(0))
+  return new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text()
+}
+
+export async function shareUrl(r: EdanRecord): Promise<string> {
+  return `${location.origin}${location.pathname}?${new URLSearchParams({ id: r.url })}#s=${await pack(JSON.stringify(trimRecord(r)))}`
+}
+
+/** Builds a result from a share link's snapshot instead of calling the API. */
+export async function snapshotResult(packed: string, req: ApiRequest): Promise<ApiResult> {
+  try {
+    const text = await unpack(packed)
+    return { request: req, status: 200, ms: 0, text, json: { response: JSON.parse(text) }, shared: true }
+  } catch {
+    return { request: req, status: 0, ms: 0, text: '', json: undefined, error: 'This share link is damaged or incomplete.', shared: true }
+  }
 }
 
 export function fieldsOf(r: EdanRecord): { label: string; content: string }[] {

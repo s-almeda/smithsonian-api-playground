@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { callApi, useApiKey, type ApiRequest, type Lang } from './api'
-import { DEFAULT_SEARCH, GetKey, ItemTab, LangContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery, type TermsQuery } from './tabs'
+import { DEFAULT_SEARCH, GetKey, ItemTab, LangContext, UserKeyContext, SearchTab, StatsPanel, TermsTab, type ItemQuery, type SearchForm, type SearchQuery, type TermsQuery } from './tabs'
 
 type Tab = 'search' | 'item' | 'terms'
 
@@ -15,7 +15,8 @@ function readUrl(): UrlState {
   const p = new URLSearchParams(location.search)
   const none = { search: null, item: null, terms: null }
   const id = p.get('id')
-  if (id) return { ...none, tab: 'item', item: { id, n: 0 } }
+  const snapshot = new URLSearchParams(location.hash.slice(1)).get('s') ?? undefined // share links carry the record itself
+  if (id) return { ...none, tab: 'item', item: { id, n: 0, snapshot } }
   if (p.get('tab') === 'item') return { ...none, tab: 'item' }
   if (p.get('tab') === 'terms') {
     const category = p.get('category')
@@ -112,6 +113,7 @@ export default function App() {
 
   return (
     <LangContext.Provider value={lang}>
+    <UserKeyContext.Provider value={stored}>
       <div className="min-h-screen bg-si-paper text-si-ink">
       <header className="bg-si-ink text-si-paper">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 pt-9 pb-3 md:flex-row md:items-end md:justify-between">
@@ -164,6 +166,7 @@ export default function App() {
         <StatsPanel apiKey={key || invite} run={run} onUnit={searchFq} />
       </main>
       </div>
+    </UserKeyContext.Provider>
     </LangContext.Provider>
   )
 }
