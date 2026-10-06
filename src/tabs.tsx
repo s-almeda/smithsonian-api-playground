@@ -362,7 +362,7 @@ function FqTags({ fqs, recent, onChange }: { fqs: string; recent: string[]; onCh
   }, [fqs]) // eslint-disable-line react-hooks/exhaustive-deps
   const tags = [...new Set(['media_usage:CC0', ...typed, ...recent, ...STARTER_FQS])]
   return (
-    <div className="flex max-h-[2.6rem] flex-wrap gap-1 overflow-y-auto">
+    <div className="flex max-h-[4.9rem] flex-wrap gap-1 overflow-y-auto">{/* ~3.5 rows: the half row hints that it scrolls */}
       {tags.map((fq) => {
         const on = !!current?.includes(fq)
         return (
@@ -460,11 +460,6 @@ export function SearchTab(props: {
             </Field>
             <Field
               label="fqs"
-              hint={
-                <>
-                  filters: a JSON list of <code>field:value</code> pairs, e.g. <code>["unit_code:NMNHFISHES"]</code>. tap a tag to add/remove it
-                </>
-              }
               below={
                 <>
                   <p className="text-[10px] text-si-gray italic">frequently used filters</p>
